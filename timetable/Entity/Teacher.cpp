@@ -47,7 +47,7 @@ string Teacher::subject_return(int i) {
 void Teacher::delete_subject(string subject) {
 	for (int i = 0; i < this->subject.size(); i++) {
 		if (this->subject[i] == subject) {
-			this->subject[i] = subject;
+			this->subject.erase(this->subject.begin() + i);
 			break;
 		}
 	}

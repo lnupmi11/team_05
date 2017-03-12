@@ -5,7 +5,7 @@
 #include <direct.h>
 #include <fstream>
 
-void Save_new_teacher(string name, string last_name, vector<string> subject, int age, string identification_code);
+void Save_new_teacher(Teacher object);
 
 vector<Teacher> all_teachers_date();
 

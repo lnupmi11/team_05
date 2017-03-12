@@ -1,27 +1,27 @@
 #include "DtoTeacher.h"
 
-void Save_new_teacher(string name, string last_name, vector<string> subject, int age, string identification_code) {
+void Save_new_teacher(Teacher object) {
 
-	string folder_name = "Teachers\\" + identification_code;
+	string folder_name = "Teachers\\" + object.return_identification_code();
 	_mkdir(folder_name.c_str());
 	ofstream out;
 	string date = folder_name + "\\date.txt";
 	out.open(date, ios_base::trunc);
-	out << name << endl << last_name << endl;
-	out << age << endl;
-	out << identification_code << endl;
+	out << object.return_name() << endl << object.return_last_name() << endl;
+	out << object.return_age() << endl;
+	out << object.return_identification_code() << endl;
 	out.close();
 	ofstream out_subject;
 	string subject_record = folder_name + "\\subjects.txt";
 	out_subject.open(subject_record, ios_base::trunc);
-	for (int i = 1; i <= subject.size(); i++) {
-		out_subject << subject[i-1] << endl;
+	for (int i = 1; i <= object.number_of_subjects(); i++) {
+		out_subject << object.subject_return(i) << endl;
 	}
 	out_subject.close();
 	cout << "This teacher created" << endl;
 	ofstream out_teacher;
 	out_teacher.open("Teachers\\teachers.txt", ios_base::app);
-	out_teacher << identification_code << endl;
+	out_teacher << object.return_identification_code() << endl;
 	out_teacher.close();
 }
 

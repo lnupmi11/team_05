@@ -40,6 +40,7 @@ public:
 		this->last_name = object.last_name;
 		this->subject = object.subject;
 		this->age = object.age;
+		this->identification_code = object.identification_code;
 	}
 	Teacher& operator() (string name1, string last_name1, vector<string> subject1, int age1, string identification_code1) {
 		this->name = name1;

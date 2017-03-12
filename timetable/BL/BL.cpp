@@ -16,6 +16,7 @@ void print_all_teachers_date() {
 }
 
 void create_new_teacher() {
+	Teacher object;
 	string name;
 	string last_name;
 	vector<string> subject;
@@ -38,7 +39,8 @@ void create_new_teacher() {
 		cin >> subj;
 		subject.push_back(subj);
 	}
-	Save_new_teacher(name, last_name, subject, age, identification_code);
+	object(name, last_name, subject, age, identification_code);
+	Save_new_teacher(object);
 }
 
 void replacemant_date_teacher() {
@@ -64,7 +66,7 @@ void replacemant_date_teacher() {
 		cin >> choice;
 		switch (choice)
 		{
-		case 1: cout << "Enter a new name "; cin >> name; object.set_last_name(name); break;
+		case 1: cout << "Enter a new name "; cin >> name; object.set_name(name); break;
 		case 2: cout << "Enter a new last name "; cin >> last_name; object.set_last_name(last_name); break;
 		case 3: cout << "Enter a new age "; cin >> age; object.set_age(age); break;
 		default:
