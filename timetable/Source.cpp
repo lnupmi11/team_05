@@ -2,9 +2,9 @@
 #include "BL\BL.h"
 
 int main() {
-	vector<Teacher> mass;
-	mass = create_new_teacher(mass);
-	print_all_teachers_date();
+	/*create_new_teacher();
+	print_all_teachers_date();*/
+	replacemant_date_teacher();
 	system("pause");
 	return 0;
 }
