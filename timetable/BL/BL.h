@@ -9,4 +9,6 @@ void create_new_teacher();
 
 void replacemant_date_teacher();
 
+bool is_number(string number);
+
 #endif

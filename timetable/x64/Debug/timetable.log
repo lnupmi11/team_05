@@ -1,15 +1,8 @@
-﻿Сборка начата 13.03.2017 12:28:26.
+﻿Сборка начата 13.03.2017 12:52:07.
      1>Проект "D:\Task\team_05\timetable\timetable.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt BL\BL.cpp DTO\DTO_Teacher.cpp Source.cpp
-         DTO_Teacher.cpp
-     1>d:\task\team_05\timetable\dto\dto_teacher.cpp(92): warning C4101: age: неиспользованная локальная переменная
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt BL\BL.cpp
          BL.cpp
-         Создание кода...
-     1>d:\task\team_05\timetable\dto\dto_teacher.cpp(163): warning C4715: check_ID: значение возвращается не при всех путях выполнения
-         Компиляция...
-         Source.cpp
-         Создание кода...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Task\team_05\x64\Debug\timetable.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Task\team_05\x64\Debug\timetable.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Task\team_05\x64\Debug\timetable.lib" /MACHINE:X64 x64\Debug\BL.obj
          x64\Debug\DTO_Teacher.obj
@@ -23,4 +16,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:06.60
+Затраченное время: 00:00:03.16

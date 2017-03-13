@@ -19,7 +19,7 @@ void create_new_teacher() {
 	string name;
 	string last_name;
 	vector<string> subject;
-	int age;
+	string age;
 	string identification_code;
 	cout << "You create a new teacher" << endl << "Enter your Name\t";
 	cin >> name;
@@ -27,6 +27,17 @@ void create_new_teacher() {
 	cin >> last_name;
 	cout << "Enter your Age\t";
 	cin >> age;
+	while (true)
+	{
+		if (is_number(age))
+		{
+			break;
+		}
+		else {
+			cout << "Try again " << endl;
+			cin >> age;
+		}
+	}
 	cout << "Enter your Identification code\t";
 	cin >> identification_code;
 	while (true) {
@@ -48,7 +59,7 @@ void create_new_teacher() {
 		cin >> subj;
 		subject.push_back(subj);
 	}
-	Teacher object(name, last_name, subject, age, identification_code);
+	Teacher object(name, last_name, subject, stoi(age), identification_code);
 	Save_new_teacher(object);
 }
 
@@ -104,4 +115,17 @@ void replacemant_date_teacher() {
 		}
 		update_teacher(object);
 	}
+}
+
+bool is_number(string number) {
+	for (int i = 0; i < number.size(); i++) {
+		if (int(number[i] - '0') >= 0 && int(number[i] - '0') <= 9) {
+			continue;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return true;
 }
