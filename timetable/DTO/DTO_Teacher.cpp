@@ -161,3 +161,62 @@ bool check_ID(string ID) {
 		}
 	}
 }
+
+void delete_teach(string ID) {
+	ifstream in("Teachers\\teachers.txt");
+	string way = "Teachers\\" + ID;
+	string first = way + "\\date.txt";
+	remove(first.c_str());
+	first = way + "\\subjects.txt";
+	remove(first.c_str());
+	vector<string> id;
+	_rmdir(way.c_str());
+	while (!in.eof())
+	{
+		string line;
+		getline(in, line);
+		if (line == "") {
+			break;
+		}
+		if (line == ID) {
+			continue;
+		}
+		id.push_back(line);
+	}
+	in.close();
+	ofstream update("Teachers\\teachers.txt", ios_base::trunc);
+	for (int i = 0; i < id.size(); i++) {
+		update << id[i] << endl;
+	}
+}
+
+Teacher find_teacher(string name, string last_name) {
+	ifstream in("Teachers\\teachers.txt");
+	Teacher object;
+	string folder_name;
+	if (in.is_open()) {
+		while (!in.eof()) {
+			getline(in, folder_name);
+			if (folder_name.empty()) {
+				break;
+			}
+			string way = "Teachers\\" + folder_name + "\\date.txt";
+			string _name;
+			string _last_name;
+			ifstream input_date(way);
+			getline(input_date, _name);
+			getline(input_date, _last_name);
+			if (name == _name && last_name == _last_name) {
+				string line;
+				object.set_name(name);
+				object.set_last_name(last_name);
+				getline(input_date, line);
+				object.set_age(stoi(line));
+				getline(input_date, line);
+				object.set_identification_code(line);
+				return object;
+			}
+		}
+	}
+	return object;
+}

@@ -11,4 +11,6 @@ void replacemant_date_teacher();
 
 bool is_number(string number);
 
+void delete_teacher();
+
 #endif

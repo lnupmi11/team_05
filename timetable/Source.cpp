@@ -4,18 +4,18 @@
 int main() {
 	while (true) {
 		int i;
-		cout << "1-create; 2-print_all; 3-edit;" << "\nset option: ";
+		cout << "1-create; 2-print_all; 3-edit; 4-delete; 5-exit" << "\nset option: ";
 		cin >> i;
-		if (i == 1) {
-			create_new_teacher(); 
+		switch (i)
+		{
+			case 1: create_new_teacher(); break;
+			case 2: print_all_teachers_date(); break;
+			case 3: replacemant_date_teacher(); break;
+			case 4: delete_teacher(); break;
+			default:
+				break;
 		}
-		else if (i == 2) {
-			print_all_teachers_date();
-		}
-		else if (i == 3) {
-			replacemant_date_teacher();
-		}
-		else {
+		if (i == 5) {
 			break;
 		}
 	}

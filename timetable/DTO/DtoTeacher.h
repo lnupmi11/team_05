@@ -17,4 +17,8 @@ void update_teacher_subject(Teacher object);
 
 bool check_ID(string ID);
 
+void delete_teach(string ID);
+
+Teacher find_teacher(string name, string last_name);
+
 #endif
