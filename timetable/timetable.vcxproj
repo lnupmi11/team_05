@@ -147,7 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BL\BL.cpp" />
-    <ClCompile Include="DTO\Save_all_date.cpp" />
+    <ClCompile Include="DTO\DTO_Teacher.cpp" />
     <ClCompile Include="Entity\Groups.cpp" />
     <ClCompile Include="Entity\Rooms.cpp" />
     <ClCompile Include="Entity\Subject.cpp" />
@@ -156,7 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BL\BL.h" />
-    <ClInclude Include="DTO\SaveDate.h" />
+    <ClInclude Include="DTO\DtoTeacher.h" />
     <ClInclude Include="Entity\Groups.h" />
     <ClInclude Include="Entity\Rooms.h" />
     <ClInclude Include="Entity\Subject.h" />

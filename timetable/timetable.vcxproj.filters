@@ -25,9 +25,6 @@
     <Filter Include="Файлы исходного кода\DTO">
       <UniqueIdentifier>{fc64f6c7-663c-48a7-a9ee-1f195ba452c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BL">
-      <UniqueIdentifier>{69d783ce-ecd8-43ab-a5d9-84cd9775cb58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы\BL">
       <UniqueIdentifier>{f9ddfc29-e2e3-4edb-8aa7-ac206ed94f45}</UniqueIdentifier>
     </Filter>
@@ -51,11 +48,11 @@
     <ClCompile Include="Entity\Teacher.cpp">
       <Filter>Файлы исходного кода\Entyti</Filter>
     </ClCompile>
-    <ClCompile Include="DTO\Save_all_date.cpp">
-      <Filter>Файлы исходного кода\DTO</Filter>
-    </ClCompile>
     <ClCompile Include="BL\BL.cpp">
       <Filter>Файлы исходного кода\BL</Filter>
+    </ClCompile>
+    <ClCompile Include="DTO\DTO_Teacher.cpp">
+      <Filter>Файлы исходного кода\DTO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,11 +68,11 @@
     <ClInclude Include="Entity\Teacher.h">
       <Filter>Заголовочные файлы\Entyti</Filter>
     </ClInclude>
-    <ClInclude Include="DTO\SaveDate.h">
-      <Filter>Заголовочные файлы\DTO</Filter>
-    </ClInclude>
     <ClInclude Include="BL\BL.h">
       <Filter>Заголовочные файлы\BL</Filter>
+    </ClInclude>
+    <ClInclude Include="DTO\DtoTeacher.h">
+      <Filter>Заголовочные файлы\DTO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
