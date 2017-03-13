@@ -15,41 +15,10 @@ private:
 	int age;
 	string identification_code;
 public:
-	Teacher() {
-		this->name = "";
-		this->last_name = "";
-		this->age = 0;
-		this->identification_code = "";
-	}
-	Teacher(string name1, string last_name1, string subject1, int age1,string identification_code1) {
-		this->name = name1;
-		this->last_name = last_name1;
-		this->subject.push_back(subject1);
-		this->age = age1;
-		this->identification_code = identification_code1;
-	}
-	Teacher(string name1, string last_name1, vector<string> subject1, int age1, string identification_code1) {
-		this->name = name1;
-		this->last_name = last_name1;
-		this->subject = subject1;
-		this->age = age1;
-		this->identification_code = identification_code1;
-	}
-	Teacher(const Teacher &object) {
-		this->name = object.name;
-		this->last_name = object.last_name;
-		this->subject = object.subject;
-		this->age = object.age;
-		this->identification_code = object.identification_code;
-	}
-	Teacher& operator() (string name1, string last_name1, vector<string> subject1, int age1, string identification_code1) {
-		this->name = name1;
-		this->last_name = last_name1;
-		this->subject = subject1;
-		this->age = age1;
-		this->identification_code = identification_code1;
-		return *this;
-	}
+	Teacher();
+	Teacher(string name, string last_name, string subject, int age, string identification_code);
+	Teacher(string name, string last_name, vector<string> subject, int age, string identification_code);
+	Teacher(const Teacher &object);
 	void set_age(int age);
 	void set_name(string name);
 	void set_last_name(string last_name);

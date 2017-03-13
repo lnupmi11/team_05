@@ -15,4 +15,6 @@ Teacher find_teacher(string ID);
 
 void update_teacher_subject(Teacher object);
 
+bool check_ID(string ID);
+
 #endif

@@ -52,3 +52,36 @@ void Teacher::delete_subject(string subject) {
 		}
 	}
 }
+
+Teacher::Teacher() {
+	{
+		this->name = "";
+		this->last_name = "";
+		this->age = 0;
+		this->identification_code = "";
+	}
+}
+
+Teacher::Teacher(string name, string last_name, string subject, int age, string identification_code) {
+		this->name = name;
+		this->last_name = last_name;
+		this->subject.push_back(subject);
+		this->age = age;
+		this->identification_code = identification_code;
+}
+
+Teacher::Teacher(string name, string last_name, vector<string> subject, int age, string identification_code) {
+	this->name = name;
+	this->last_name = last_name;
+	this->subject = subject;
+	this->age = age;
+	this->identification_code = identification_code;
+}
+
+Teacher::Teacher(const Teacher &object) {
+	this->name = object.name;
+	this->last_name = object.last_name;
+	this->subject = object.subject;
+	this->age = object.age;
+	this->identification_code = object.identification_code;
+}

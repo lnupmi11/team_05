@@ -16,7 +16,6 @@ void print_all_teachers_date() {
 }
 
 void create_new_teacher() {
-	Teacher object;
 	string name;
 	string last_name;
 	vector<string> subject;
@@ -30,6 +29,16 @@ void create_new_teacher() {
 	cin >> age;
 	cout << "Enter your Identification code\t";
 	cin >> identification_code;
+	while (true) {
+		bool result = check_ID(identification_code);
+		if (result == true) {
+			cout << "PLease enter new ID, because this ID exist" << endl;
+			cin >> identification_code;
+		}
+		else {
+			break;
+		}
+	}
 	cout << "How many items is teacher? ";
 	int coll;
 	cin >> coll;
@@ -39,7 +48,7 @@ void create_new_teacher() {
 		cin >> subj;
 		subject.push_back(subj);
 	}
-	object(name, last_name, subject, age, identification_code);
+	Teacher object(name, last_name, subject, age, identification_code);
 	Save_new_teacher(object);
 }
 

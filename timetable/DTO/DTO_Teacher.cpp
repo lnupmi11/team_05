@@ -89,7 +89,6 @@ Teacher find_teacher(string ID) {
 				string line;
 				string name;
 				string last_name;
-				vector<string> subject;
 				int age;
 				string identification_code;
 				if (input_date.is_open()) {
@@ -97,12 +96,12 @@ Teacher find_teacher(string ID) {
 						getline(input_date, line);
 						switch (i)
 						{
-						case 1: name = line; break;
-						case 2: last_name = line; break;
-						case 3: age = stoi(line); break;
-						case 4: identification_code = line; break;
-						default:
-							break;
+							case 1: object.set_name(line); break;
+							case 2: object.set_last_name(line); break;
+							case 3: object.set_age(stoi(line)); break;
+							case 4: object.set_identification_code(line); break;
+							default:
+								break;
 						}
 					}
 					input_date.close();
@@ -113,11 +112,10 @@ Teacher find_teacher(string ID) {
 						if (line.empty()) {
 							break;
 						}
-						subject.push_back(line);
+						object.add_subject(line);
 					}
 					input_subject.close();
 				}
-				object(name, last_name, subject, age, identification_code);
 			}
 			if (folder_name.empty()) {
 				break;
@@ -147,4 +145,19 @@ void update_teacher(Teacher object) {
 	out << object.return_age() << endl;
 	out << object.return_identification_code() << endl;
 	out.close();
+}
+
+bool check_ID(string ID) {
+	ifstream in("Teachers\\teachers.txt");
+	string id;
+	while (!in.eof())
+	{
+		getline(in, id);
+		if (id == "") {
+			return false;
+		}
+		if (id == ID) {
+			return true;
+		}
+	}
 }
