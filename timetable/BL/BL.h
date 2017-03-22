@@ -3,6 +3,7 @@
 #define _BL_
 #include "../DTO/DtoTeacher.h"
 #include "../DTO/DtoLogin.h"
+#include "../DTO/DtoRoom.h"
 
 void teacher_menu();
 
