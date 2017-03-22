@@ -28,6 +28,6 @@
 *.out
 *.app
 
+timetable/x64/Debug/timetable.log
 [Dd]ebug*/
 [Rr]elease*/
-x64/Debug*/
