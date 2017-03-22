@@ -1,4 +1,3 @@
-#include "Entity\Teacher.h"
 #include "BL\BL.h"
 
 int main() {

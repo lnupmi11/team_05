@@ -57,6 +57,9 @@
     <ClCompile Include="DTO\DtoLogin.cpp">
       <Filter>Файлы исходного кода\DTO</Filter>
     </ClCompile>
+    <ClCompile Include="DTO\DtoRoom.cpp">
+      <Filter>Файлы исходного кода\DTO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity\Groups.h">
@@ -78,6 +81,9 @@
       <Filter>Заголовочные файлы\DTO</Filter>
     </ClInclude>
     <ClInclude Include="DTO\DtoLogin.h">
+      <Filter>Заголовочные файлы\DTO</Filter>
+    </ClInclude>
+    <ClInclude Include="DTO\DtoRoom.h">
       <Filter>Заголовочные файлы\DTO</Filter>
     </ClInclude>
   </ItemGroup>
