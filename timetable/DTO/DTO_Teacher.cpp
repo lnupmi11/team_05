@@ -1,6 +1,6 @@
 #include "DtoTeacher.h"
 
-void Save_new_teacher(Teacher object) {
+void DTO_Teacher::Save_new_teacher(Teacher object) {
 
 	string folder_name = "Teachers\\" + object.return_identification_code();
 	_mkdir(folder_name.c_str());
@@ -25,7 +25,7 @@ void Save_new_teacher(Teacher object) {
 	out_teacher.close();
 }
 
-vector<Teacher> all_teachers_date() {
+vector<Teacher> DTO_Teacher::all_teachers_date() {
 	ifstream in("Teachers\\teachers.txt");
 	vector<Teacher> objects;
 	string folder_name;
@@ -76,7 +76,7 @@ vector<Teacher> all_teachers_date() {
 }
 
 
-Teacher find_teacher(string ID) {
+Teacher DTO_Teacher::find_teacher(string ID) {
 	ifstream in("Teachers\\teachers.txt");
 	Teacher object;
 	string folder_name;
@@ -89,7 +89,6 @@ Teacher find_teacher(string ID) {
 				string line;
 				string name;
 				string last_name;
-				int age;
 				string identification_code;
 				if (input_date.is_open()) {
 					for (int i = 1; i <= 4; i++) {
@@ -126,7 +125,7 @@ Teacher find_teacher(string ID) {
 	return object;
 }
 
-void update_teacher_subject(Teacher object) {
+void DTO_Teacher::update_teacher_subject(Teacher object) {
 	ofstream out;
 	string way = "Teachers\\" + object.return_identification_code() + "\\subjects.txt";
 	out.open(way, ios_base::trunc);
@@ -136,7 +135,7 @@ void update_teacher_subject(Teacher object) {
 	out.close();
 }
 
-void update_teacher(Teacher object) {
+void DTO_Teacher::update_teacher(Teacher object) {
 	ofstream out;
 	string way = "Teachers\\" + object.return_identification_code() + "\\date.txt";
 	out.open(way, ios_base::trunc);
@@ -147,7 +146,7 @@ void update_teacher(Teacher object) {
 	out.close();
 }
 
-bool check_ID(string ID) {
+bool DTO_Teacher::check_ID(string ID) {
 	ifstream in("Teachers\\teachers.txt");
 	string id;
 	while (!in.eof())
@@ -162,7 +161,7 @@ bool check_ID(string ID) {
 	}
 }
 
-void delete_teach(string ID) {
+void DTO_Teacher::delete_teach(string ID) {
 	ifstream in("Teachers\\teachers.txt");
 	string way = "Teachers\\" + ID;
 	string first = way + "\\date.txt";
@@ -190,7 +189,7 @@ void delete_teach(string ID) {
 	}
 }
 
-Teacher find_teacher(string name, string last_name) {
+Teacher DTO_Teacher::find_teacher(string name, string last_name) {
 	ifstream in("Teachers\\teachers.txt");
 	Teacher object;
 	string folder_name;

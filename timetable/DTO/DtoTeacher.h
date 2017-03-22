@@ -5,20 +5,24 @@
 #include <direct.h>
 #include <fstream>
 
-void Save_new_teacher(Teacher object);
+class DTO_Teacher {
+public:
 
-vector<Teacher> all_teachers_date();
+	void Save_new_teacher(Teacher object);
 
-void update_teacher(Teacher object);
+	vector<Teacher> all_teachers_date();
 
-Teacher find_teacher(string ID);
+	void update_teacher(Teacher object);
 
-void update_teacher_subject(Teacher object);
+	Teacher find_teacher(string ID);
 
-bool check_ID(string ID);
+	void update_teacher_subject(Teacher object);
 
-void delete_teach(string ID);
+	bool check_ID(string ID);
 
-Teacher find_teacher(string name, string last_name);
+	void delete_teach(string ID);
 
+	Teacher find_teacher(string name, string last_name);
+
+};
 #endif

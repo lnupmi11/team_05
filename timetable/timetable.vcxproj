@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BL\BL.cpp" />
+    <ClCompile Include="DTO\DtoLogin.cpp" />
     <ClCompile Include="DTO\DTO_Teacher.cpp" />
     <ClCompile Include="Entity\Groups.cpp" />
     <ClCompile Include="Entity\Rooms.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BL\BL.h" />
+    <ClInclude Include="DTO\DtoLogin.h" />
     <ClInclude Include="DTO\DtoTeacher.h" />
     <ClInclude Include="Entity\Groups.h" />
     <ClInclude Include="Entity\Rooms.h" />

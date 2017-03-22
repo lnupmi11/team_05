@@ -28,6 +28,6 @@
 *.out
 *.app
 
-*.vs/timetable/v14
-*Debug
-*x64/Debug
+x64/Debug/
+Debug/
+.vs/timetable/v14/

@@ -1,8 +1,70 @@
 #include "BL.h"
 
+bool start_login() {
+	Login object;
+	string login, password;
+	cin >> login >> password;
+	if (object.check_login(login, password)) {
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Start() {
+	cout << "Enter your login and password" << endl;
+	int count_try = 0;
+	while (!start_login()) {
+		cout << "Error. Please try again" << endl;
+		count_try++;
+		if (count_try == 5) {
+			cout << "Limit attempts exhausted. Please try again later";
+			return;
+		}
+	}
+	while (true)
+	{
+		cout << "Available menu items :" << endl;
+		cout << "1. Teacher;" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Exit" << endl;
+		int i;
+		cin >> i;
+		switch (i)
+		{
+			case 1: teacher_menu(); break;
+			case 5: return;
+			default:
+				break;
+		}
+	}
+}
+
+void teacher_menu() {
+	while (true) {
+		int i;
+		cout << "1-create; 2-print_all; 3-information about teacher; 4-edit; 5-delete; 6-exit;" << "\nset option: ";
+		cin >> i;
+		switch (i)
+		{
+		case 1: create_new_teacher(); break;
+		case 2: print_all_teachers_date(); break;
+		case 3: find_information_about_teacher(); break;
+		case 4: replacemant_date_teacher(); break;
+		case 5: delete_teacher(); break;
+		default:
+			break;
+		}
+		if (i == 6) {
+			break;
+		}
+	}
+}
+
 void print_all_teachers_date() {
 	system("cls");
-	vector<Teacher> objects = all_teachers_date();
+	DTO_Teacher dto;
+	vector<Teacher> objects = dto.all_teachers_date();
 	cout << "All teachers information :" << endl;
 	cout << endl;
 	for (int i = 0; i < objects.size(); i++) {
@@ -20,6 +82,7 @@ void print_all_teachers_date() {
 
 void create_new_teacher() {
 	system("cls");
+	DTO_Teacher dto;
 	string name;
 	string last_name;
 	vector<string> subject;
@@ -45,7 +108,7 @@ void create_new_teacher() {
 	cout << "Enter your Identification code\t";
 	cin >> identification_code;
 	while (true) {
-		bool result = check_ID(identification_code);
+		bool result = dto.check_ID(identification_code);
 		if (result == true) {
 			cout << "PLease enter new ID, because this ID exist" << endl;
 			cin >> identification_code;
@@ -63,14 +126,17 @@ void create_new_teacher() {
 		cin >> subj;
 		subject.push_back(subj);
 	}
+	Login log;
+	log.save_new_user(identification_code);
 	Teacher object(name, last_name, subject, stoi(age), identification_code);
-	Save_new_teacher(object);
+	dto.Save_new_teacher(object);
 }
 
 void replacemant_date_teacher() {
 	system("cls");
+	DTO_Teacher dto;
 	cout << "1) Enter ID which teacher you want to edit" << endl;
-	cout << "2) If you do not remember your ID, you can find by typing name and last name. But this search can be inaccurate" << endl;
+	cout << "2) If you do not remember your ID, you can find by typing name and last name.\n But this search can be inaccurate" << endl;
 	cout << "set option: ";
 	int i;
 	cin >> i;
@@ -79,7 +145,7 @@ void replacemant_date_teacher() {
 		string ID;
 		cin >> ID;
 		Teacher object;
-		object = find_teacher(ID);
+		object = dto.find_teacher(ID);
 		if (object.return_identification_code() == "") {
 			cout << "This teacher was not found." << endl;
 		}
@@ -129,17 +195,17 @@ void replacemant_date_teacher() {
 					cin >> delete_subject;
 					object.delete_subject(delete_subject);
 				}
-				update_teacher_subject(object);
+				dto.update_teacher_subject(object);
 				return;
 			}
-			update_teacher(object);
+			dto.update_teacher(object);
 		}
 	}
 	if (i == 2) {
 		cout << "Enter name and last name" << endl;
 		string name, last_name;
 		cin >> name >> last_name;
-		Teacher object = find_teacher(name, last_name);
+		Teacher object = dto.find_teacher(name, last_name);
 		if (object.return_identification_code() == "") {
 			cout << "This teacher was not found." << endl;
 		}
@@ -189,10 +255,10 @@ void replacemant_date_teacher() {
 					cin >> delete_subject;
 					object.delete_subject(delete_subject);
 				}
-				update_teacher_subject(object);
+				dto.update_teacher_subject(object);
 				return;
 			}
-			update_teacher(object);
+			dto.update_teacher(object);
 		}
 	}
 	else {
@@ -215,8 +281,54 @@ bool is_number(string number) {
 
 void delete_teacher() {
 	system("cls");
+	DTO_Teacher dto;
 	cout << "You can delete teacher account. Please enter ID whose teacher you will be deleted: \t";
 	string Id;
 	cin >> Id;
-	delete_teach(Id);
+	dto.delete_teach(Id);
+}
+
+void find_information_about_teacher() {
+	system("cls");
+	DTO_Teacher dto;
+	cout << "1) Enter ID which teacher you want to find" << endl;
+	cout << "2) If you do not remember your ID, you can find by typing name and last name.\n But this search can be inaccurate" << endl;
+	cout << "set option: ";
+	int i;
+	cin >> i;
+	if (i == 1) {
+		cout << "Enter ID" << endl;
+		string ID;
+		cin >> ID;
+		Teacher object;
+		object = dto.find_teacher(ID);
+		if (object.return_identification_code() == "") {
+			cout << "This teacher was not found." << endl;
+			return;
+		}
+		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
+		cout << "Age :" << object.return_age() << endl;
+		cout << "Identification Code :" << object.return_identification_code() << endl;
+		cout << "Subjects : " << endl;
+		for (int j = 1; j <= object.number_of_subjects(); j++) {
+			cout << j << ": " << object.subject_return(j) << endl;
+		}
+	}
+	if (i == 2) {
+		cout << "Enter name and last name" << endl;
+		string name, last_name;
+		cin >> name >> last_name;
+		Teacher object = dto.find_teacher(name, last_name);
+		if (object.return_identification_code() == "") {
+			cout << "This teacher was not found." << endl;
+			return;
+		}
+		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
+		cout << "Age :" << object.return_age() << endl;
+		cout << "Identification Code :" << object.return_identification_code() << endl;
+		cout << "Subjects : " << endl;
+		for (int j = 1; j <= object.number_of_subjects(); j++) {
+			cout << j << ": " << object.subject_return(j) << endl;
+		}
+	}
 }
