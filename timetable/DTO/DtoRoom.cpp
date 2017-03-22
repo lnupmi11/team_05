@@ -12,8 +12,7 @@ void DTO_Room::save_new_room_date(Room object,string day) {
 	out.close();
 	out.open(folder_name + "\\" + day + ".txt", ios_base::app);
 	out << object.return_number_subject() << endl;
-	out << object.return_subject() << endl;
-	out << object.return_name() << endl << object.return_last_name() << endl;
+	out << object.return_groups() << endl;
 	out.close();
 }
 
