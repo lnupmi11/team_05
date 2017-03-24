@@ -9,15 +9,18 @@ using namespace std;
 class Room {
 private:
 	string number;
-	string groups;
-	int number_subject;
+	string type;
+	int capacity;
 public:
 	Room();
-	Room(string number, string groups, int number_subject);
+	Room(string number, string type, int capacity);
 	Room(const Room& obj);
 	string return_number();
-	string return_groups();
-	int return_number_subject();
+	string return_type();
+	int return_capacity();
+	void set_number(string number);
+	void set_type(string type);
+	void set_capacity(int capacity);
 };
 
 

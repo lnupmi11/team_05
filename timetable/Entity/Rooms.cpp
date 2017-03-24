@@ -2,30 +2,42 @@
 
 Room::Room() {
 	this->number = "";
-	this->number_subject = 0;
-	this->groups = "";
+	this->capacity = 0;
+	this->type = "";
 }
 
 Room::Room(const Room& obj) {
 	this->number = obj.number;
-	this->number_subject = obj.number_subject;
-	this->groups = obj.groups;
+	this->capacity = obj.capacity;
+	this->type = obj.type;
 }
 
-Room::Room(string number, string groups, int number_subject) {
+Room::Room(string number, string type, int capacity) {
 	this->number = number;
-	this->number_subject = number_subject;
-	this->groups = groups;
+	this->capacity = capacity;
+	this->type = type;
 }
 
 string Room::return_number() {
 	return this->number;
 }
 
-int Room::return_number_subject() {
-	return this->number_subject;
+int Room::return_capacity() {
+	return this->capacity;
 }
 
-string Room::return_groups() {
-	return this->groups;
+string Room::return_type() {
+	return this->type;
+}
+
+void Room::set_capacity(int capacity) {
+	this->capacity = capacity;
+}
+
+void Room::set_number(string number) {
+	this->number = number;
+}
+
+void Room::set_type(string type) {
+	this->type = type;
 }

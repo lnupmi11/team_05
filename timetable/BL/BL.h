@@ -23,4 +23,10 @@ void Start();
 
 void find_information_about_teacher();
 
+void create_new_room();
+
+void delete_room();
+
+void replacemant_date_room();
+
 #endif

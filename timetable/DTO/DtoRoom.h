@@ -8,8 +8,10 @@ using namespace std;
 
 class DTO_Room {
 public:
-	void save_new_room_date(Room object,string day);
+	void create_new_room(Room object);
+	void save_new_room_date(Room object);
 	bool is_room(string number);
-	bool is_room_free(int number,string day,string room);
-	bool is_room_free(string day,string room);
+	Room find_date_room(string number);
+	vector<Room> all_room_date();
+	void delete_room(string number);
 };
