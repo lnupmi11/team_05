@@ -29,4 +29,10 @@ void delete_room();
 
 void replacemant_date_room();
 
+void print_all_room_date();
+
+void find_information_about_room();
+
+void room_menu();
+
 #endif

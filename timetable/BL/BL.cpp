@@ -33,6 +33,7 @@ void Start() {
 		switch (i)
 		{
 			case 1: teacher_menu(); break;
+			case 3: room_menu(); break;
 			case 5: return;
 			default:
 				break;
@@ -329,6 +330,122 @@ void find_information_about_teacher() {
 		cout << "Subjects : " << endl;
 		for (int j = 1; j <= object.number_of_subjects(); j++) {
 			cout << j << ": " << object.subject_return(j) << endl;
+		}
+	}
+}
+
+void create_new_room() {
+	system("cls");
+	cout << "Enter room number ";
+	string number;
+	cin >> number;
+	DTO_Room dto_room;
+	while (dto_room.is_room(number)) {
+		cout << "This room already created" << endl;
+		cout << "To return to the previous menu enter 1 " << endl;
+		cout << "To enter again 2" << endl << "Set option" << endl;
+		int i;
+		cin >> i;
+		if (i == 1) {
+			return;
+		}
+		else {
+			cin >> number;
+		}
+	}
+	cout << "Enter capacity this room ";
+	int capacity;
+	cin >> capacity;
+	cout << "Enter type this room ";
+	string type;
+	cin >> type;
+	Room room(number, type, capacity);
+	dto_room.create_new_room(room);
+	cout << endl << "Success" << endl << endl;
+}
+
+void delete_room() {
+	system("cls");
+	cout << "Enter room which you want to delete" << endl;
+	string number;
+	cin >> number;
+	DTO_Room dto_room;
+	dto_room.delete_room(number);
+}
+
+void replacemant_date_room() {
+	system("cls");
+	cout << "Enter room which you want to edit" << endl;
+	string number;
+	cin >> number;
+	DTO_Room dto_room;
+	while (!dto_room.is_room(number))
+	{
+		cout << "Enter correct number " << endl;
+		cin >> number;
+	}
+	Room room;
+	room.set_number(number);
+	string line;
+	cout << "You can edit: " << endl;
+	cout << "1. Capacity" << endl;
+	cout << "2. Type" << endl;
+	int i = 0;
+	cin >> i;
+	switch (i)
+	{
+	case 1: cin >> line; room.set_capacity(stoi(line)); break;
+	case 2: cin>>line; room.set_type(line); break;
+	default:
+		break;
+	}
+	dto_room.save_new_room_date(room);
+}
+
+void print_all_room_date() {
+	system("cls");
+	vector<Room> objects;
+	DTO_Room dto_room;
+	objects = dto_room.all_room_date();
+	for (int i = 0; i < objects.size(); i++) {
+		cout << "Number : " << objects[i].return_number() << endl;
+		cout << "Capacity : " << objects[i].return_capacity() << endl;
+		cout << "Type : " << objects[i].return_type() << endl;
+		cout << endl;
+	}
+}
+
+void find_information_about_room() {
+	system("cls");
+	Room object;
+	string num;
+	cout << "Enter room which you want find" << endl;
+	cin >> num;
+	DTO_Room dto_room;
+	object = dto_room.find_date_room(num);
+	cout << "Number : " << object.return_number() << endl;
+	cout << "Capacity : " << object.return_capacity() << endl;
+	cout << "Type : " << object.return_type() << endl;
+}
+
+void room_menu() {
+	while (true) {
+		int i;
+		cout << "1. Create new room " << endl << "2. Edit date room" << endl << "3. Delete room" << endl << "4. Print all" << endl << "5. Print one room" << endl << "6. Exit" << endl;
+		cout << "Set option ";
+		cin >> i;
+		switch (i)
+		{
+			case 1: create_new_room(); break;
+			case 2: replacemant_date_room(); break;
+			case 3: delete_room(); break;
+			case 4: print_all_room_date(); break;
+			case 5: find_information_about_room(); break;
+			default:
+				break;
+		}
+		if (i == 6) {
+			break;
 		}
 	}
 }

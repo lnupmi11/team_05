@@ -37,6 +37,7 @@ void DTO_Room::create_new_room(Room object) {
 	out << object.return_type() << endl;
 	out.close();
 	out.open("Rooms\\Rooms.txt", ios_base::app);
+	out << object.return_number() << endl;
 	out.close();
 }
 
