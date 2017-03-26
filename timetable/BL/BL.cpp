@@ -27,7 +27,7 @@ void Start() {
 	while (true)
 	{
 		cout << "Available menu items :" << endl;
-		cout << "1. Teacher;" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Exit" << endl;
+		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Exit" << endl;
 		int i;
 		cin >> i;
 		switch (i)
@@ -44,7 +44,7 @@ void Start() {
 void teacher_menu() {
 	while (true) {
 		int i;
-		cout << "1-create; 2-print_all; 3-information about teacher; 4-edit; 5-delete; 6-exit;" << "\nset option: ";
+		cout << "1. Create" << endl << "2. Print all" << endl << "3. Information about teacher" << endl << "4. Edit" << endl << "5. Delete" << endl << "6. Exit" << "\nset option: ";
 		cin >> i;
 		switch (i)
 		{
@@ -118,7 +118,7 @@ void create_new_teacher() {
 			break;
 		}
 	}
-	cout << "How many items is teacher? ";
+	cout << "How many items learned this teacher? ";
 	int coll;
 	cin >> coll;
 	for (int i = 0; i < coll; i++) {
@@ -137,7 +137,7 @@ void replacemant_date_teacher() {
 	system("cls");
 	DTO_Teacher dto;
 	cout << "1) Enter ID which teacher you want to edit" << endl;
-	cout << "2) If you do not remember your ID, you can find by typing name and last name.\n But this search can be inaccurate" << endl;
+	cout << "2) Enter name and last name which teacher you want to edit" << endl;
 	cout << "set option: ";
 	int i;
 	cin >> i;
@@ -293,7 +293,7 @@ void find_information_about_teacher() {
 	system("cls");
 	DTO_Teacher dto;
 	cout << "1) Enter ID which teacher you want to find" << endl;
-	cout << "2) If you do not remember your ID, you can find by typing name and last name.\n But this search can be inaccurate" << endl;
+	cout << "2) Enter name and last name which teacher you want to find" << endl;
 	cout << "set option: ";
 	int i;
 	cin >> i;
