@@ -13,5 +13,5 @@ public:
 	bool is_room(string number);
 	Room find_date_room(string number);
 	vector<Room> all_room_date();
-	void delete_room(string number);
+	void delete_room(string number); 
 };
