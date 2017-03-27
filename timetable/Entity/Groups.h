@@ -7,15 +7,11 @@ using namespace std;
 
 class Group {
 private:
-	string name; // назва спеціальності ( ПМІ)
-	int number; // група ( 11 -- 15)
+	string name; //(ПМІ-11)
 public:
 	Group();
-
-	Group(string n, int numb);
+	Group(string n);
 	Group(const Group& obj);
 	void set_name(string n);
 	string get_name();
-	void set_number(int n);
-	int get_number();
 };
