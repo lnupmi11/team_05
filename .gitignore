@@ -32,6 +32,8 @@
 *64x
 /.vs/timetable/v14
 *.vs/timetable/v14
+*.vcxproj
+*.vcxproj.filters
 
 *.sdf
 *.sln
