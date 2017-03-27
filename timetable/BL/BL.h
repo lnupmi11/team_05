@@ -5,6 +5,8 @@
 #include "../DTO/DtoLogin.h"
 #include "../DTO/DtoRoom.h"
 
+extern bool makeChanges;
+
 void teacher_menu();
 
 void print_all_teachers_date();

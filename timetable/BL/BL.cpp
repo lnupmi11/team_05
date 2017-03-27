@@ -1,10 +1,19 @@
 #include "BL.h"
 
+bool makeChanges;
+
 bool start_login() {
 	Login object;
 	string login, password;
 	cin >> login >> password;
 	if (object.check_login(login, password)) {
+		if (login != "admin") {
+			makeChanges = false;
+		}
+		else
+		{
+			makeChanges = true;
+		}
 		return true;
 	}
 	else
@@ -26,6 +35,7 @@ void Start() {
 	}
 	while (true)
 	{
+		system("cls");
 		cout << "Available menu items :" << endl;
 		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Exit" << endl;
 		int i;
@@ -42,22 +52,42 @@ void Start() {
 }
 
 void teacher_menu() {
-	while (true) {
-		int i;
-		cout << "1. Create" << endl << "2. Print all" << endl << "3. Information about teacher" << endl << "4. Edit" << endl << "5. Delete" << endl << "6. Exit" << "\nset option: ";
-		cin >> i;
-		switch (i)
-		{
-		case 1: create_new_teacher(); break;
-		case 2: print_all_teachers_date(); break;
-		case 3: find_information_about_teacher(); break;
-		case 4: replacemant_date_teacher(); break;
-		case 5: delete_teacher(); break;
-		default:
-			break;
+	system("cls");
+	if (makeChanges == true) {
+		while (true) {
+			int i;
+			cout << "1. Create" << endl << "2. Print all" << endl << "3. Information about teacher" << endl << "4. Edit" << endl << "5. Delete" << endl << "6. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: create_new_teacher(); break;
+			case 2: print_all_teachers_date(); break;
+			case 3: find_information_about_teacher(); break;
+			case 4: replacemant_date_teacher(); break;
+			case 5: delete_teacher(); break;
+			default:
+				break;
+			}
+			if (i == 6) {
+				break;
+			}
 		}
-		if (i == 6) {
-			break;
+	}
+	else {
+		while (true) {
+			int i;
+			cout << "1. Print all" << endl << "2. Information about teacher" << endl << "3. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: print_all_teachers_date(); break;
+			case 2: find_information_about_teacher(); break;
+			default:
+				break;
+			}
+			if (i == 3) {
+				break;
+			}
 		}
 	}
 }
@@ -121,10 +151,11 @@ void create_new_teacher() {
 	cout << "How many items learned this teacher? ";
 	int coll;
 	cin >> coll;
+	cin.ignore();
 	for (int i = 0; i < coll; i++) {
 		cout << "Enter subject " << i + 1 << "  ";
 		string subj;
-		cin >> subj;
+		getline(cin, subj);
 		subject.push_back(subj);
 	}
 	Login log;
@@ -187,13 +218,15 @@ void replacemant_date_teacher() {
 				if (choice == 1) {
 					string new_subject;
 					cout << "Enter new subject ";
-					cin >> new_subject;
+					cin.ignore();
+					getline(cin, new_subject);
 					object.add_subject(new_subject);
 				}
 				if (choice == 2) {
 					string delete_subject;
 					cout << "Enter the subject you want to delete ";
-					cin >> delete_subject;
+					cin.ignore();
+					getline(cin, delete_subject);
 					object.delete_subject(delete_subject);
 				}
 				dto.update_teacher_subject(object);
@@ -247,13 +280,15 @@ void replacemant_date_teacher() {
 				if (choice == 1) {
 					string new_subject;
 					cout << "Enter new subject ";
-					cin >> new_subject;
+					cin.ignore();
+					getline(cin, new_subject);
 					object.add_subject(new_subject);
 				}
 				if (choice == 2) {
 					string delete_subject;
 					cout << "Enter the subject you want to delete ";
-					cin >> delete_subject;
+					cin.ignore();
+					getline(cin, delete_subject);
 					object.delete_subject(delete_subject);
 				}
 				dto.update_teacher_subject(object);
@@ -287,6 +322,8 @@ void delete_teacher() {
 	string Id;
 	cin >> Id;
 	dto.delete_teach(Id);
+	Login log;
+	log.delete_user(Id);
 }
 
 void find_information_about_teacher() {
@@ -307,6 +344,7 @@ void find_information_about_teacher() {
 			cout << "This teacher was not found." << endl;
 			return;
 		}
+		cout << endl;
 		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
 		cout << "Age :" << object.return_age() << endl;
 		cout << "Identification Code :" << object.return_identification_code() << endl;
@@ -314,6 +352,7 @@ void find_information_about_teacher() {
 		for (int j = 1; j <= object.number_of_subjects(); j++) {
 			cout << j << ": " << object.subject_return(j) << endl;
 		}
+		cout << endl;
 	}
 	if (i == 2) {
 		cout << "Enter name and last name" << endl;
@@ -324,6 +363,7 @@ void find_information_about_teacher() {
 			cout << "This teacher was not found." << endl;
 			return;
 		}
+		cout << endl;
 		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
 		cout << "Age :" << object.return_age() << endl;
 		cout << "Identification Code :" << object.return_identification_code() << endl;
@@ -331,6 +371,7 @@ void find_information_about_teacher() {
 		for (int j = 1; j <= object.number_of_subjects(); j++) {
 			cout << j << ": " << object.subject_return(j) << endl;
 		}
+		cout << endl;
 	}
 }
 
@@ -356,9 +397,10 @@ void create_new_room() {
 	cout << "Enter capacity this room ";
 	int capacity;
 	cin >> capacity;
-	cout << "Enter type this room ";
+	cout << "Enter type this room " << endl;
 	string type;
-	cin >> type;
+	cin.ignore();
+	getline(cin, type);
 	Room room(number, type, capacity);
 	dto_room.create_new_room(room);
 	cout << endl << "Success" << endl << endl;
@@ -395,7 +437,7 @@ void replacemant_date_room() {
 	switch (i)
 	{
 	case 1: cin >> line; room.set_capacity(stoi(line)); break;
-	case 2: cin>>line; room.set_type(line); break;
+	case 2: cin.ignore(); getline(cin, line); room.set_type(line); break;
 	default:
 		break;
 	}
@@ -407,6 +449,7 @@ void print_all_room_date() {
 	vector<Room> objects;
 	DTO_Room dto_room;
 	objects = dto_room.all_room_date();
+	cout << endl;
 	for (int i = 0; i < objects.size(); i++) {
 		cout << "Number : " << objects[i].return_number() << endl;
 		cout << "Capacity : " << objects[i].return_capacity() << endl;
@@ -423,19 +466,23 @@ void find_information_about_room() {
 	cin >> num;
 	DTO_Room dto_room;
 	object = dto_room.find_date_room(num);
+	cout << endl;
 	cout << "Number : " << object.return_number() << endl;
 	cout << "Capacity : " << object.return_capacity() << endl;
 	cout << "Type : " << object.return_type() << endl;
+	cout << endl;
 }
 
 void room_menu() {
-	while (true) {
-		int i;
-		cout << "1. Create new room " << endl << "2. Edit date room" << endl << "3. Delete room" << endl << "4. Print all" << endl << "5. Print one room" << endl << "6. Exit" << endl;
-		cout << "Set option ";
-		cin >> i;
-		switch (i)
-		{
+	system("cls");
+	if (makeChanges == true) {
+		while (true) {
+			int i;
+			cout << "1. Create new room " << endl << "2. Edit date room" << endl << "3. Delete room" << endl << "4. Print all" << endl << "5. Print one room" << endl << "6. Exit" << endl;
+			cout << "Set option ";
+			cin >> i;
+			switch (i)
+			{
 			case 1: create_new_room(); break;
 			case 2: replacemant_date_room(); break;
 			case 3: delete_room(); break;
@@ -443,9 +490,28 @@ void room_menu() {
 			case 5: find_information_about_room(); break;
 			default:
 				break;
+			}
+			if (i == 6) {
+				break;
+			}
 		}
-		if (i == 6) {
-			break;
+	}
+	else {
+		while (true) {
+			int i;
+			cout << "1. Print all" << endl << "2. Print one room" << endl << "3. Exit" << endl;
+			cout << "Set option ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: print_all_room_date(); break;
+			case 2: find_information_about_room(); break;
+			default:
+				break;
+			}
+			if (i == 3) {
+				break;
+			}
 		}
 	}
 }

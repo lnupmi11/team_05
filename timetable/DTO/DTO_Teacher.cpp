@@ -205,14 +205,24 @@ Teacher DTO_Teacher::find_teacher(string name, string last_name) {
 			ifstream input_date(way);
 			getline(input_date, _name);
 			getline(input_date, _last_name);
+			string line;
 			if (name == _name && last_name == _last_name) {
-				string line;
 				object.set_name(name);
 				object.set_last_name(last_name);
 				getline(input_date, line);
 				object.set_age(stoi(line));
 				getline(input_date, line);
 				object.set_identification_code(line);
+				way = "Teachers\\" + folder_name + "\\subjects.txt";
+				ifstream input_subject(way);
+				while (!input_subject.eof()) {
+					getline(input_subject, line);
+					if (line.empty()) {
+						break;
+					}
+					object.add_subject(line);
+				}
+				input_subject.close();
 				return object;
 			}
 		}
