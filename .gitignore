@@ -28,5 +28,7 @@
 *.out
 *.app
 
-x64/*
-.vs/timetable/v14/*
+/64x
+*64x
+/.vs/timetable/v14
+*.vs/timetable/v14
