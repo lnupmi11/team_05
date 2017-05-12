@@ -2,35 +2,23 @@
 void DTO_Subject:: save_new_subject_date(Subject object)
 {
 	ofstream out;
-	string way="Subjects\\date.txt";
+	string way="Subjects\\"+object.get_course_title() +"date.txt";
 	out.open(way, ios_base::trunc);
 	out<<object.get_course_title()<<endl;
 	out.close();
 }
-void DTO_Subject:: Save_new_subject(Subject object) 
+void DTO_Subject:: create_new_subject(Subject object);
 {
-	string folder_name = "Subject" ;
+	ofstream out;
+	string folder_name = "Subjects\\" + object.get_course_title() ;
 	_mkdir(folder_name.c_str());
-	ofstream out_subject;
-	string subjectrecord = folder_name +"\\subjects.txt";
-	out_subject.open(subjectrecord, ios_base::trunc);
-	out_subject << object.get_course_title() << endl;
-	out_subject.close();
-	cout << "This subject created" << endl;
-}
-void DTO_Subject:: Save_new_subjects(vector <Subject> object) 
-{
-	string folder_name = "Subject" ;
-	_mkdir(folder_name.c_str());
-	ofstream out_subject;
-	string subjectrecord = folder_name +"\\subjects.txt";
-	out_subject.open(subjectrecord, ios_base::trunc);
-	for (int i = 1; i <= object.size(); i++) 
-	{
-		out_subject << object[i-1].get_course_title() << endl;
-	}
-	out_subject.close();
-	cout << "This subjects created" << endl;
+	string way=folder_name+"\\date.txt";
+	out.open(way, ios_base::app);
+	out<<object.get_course_title()<<endl;
+	out.close();
+	out.open("Subjects\\Subjects.txt", ios_base::app);
+	out<<object.get_course_title()<<endl;
+	out.close();
 }
 vector<string> DTO_Subject::all_subject_date()
 {
