@@ -1,5 +1,12 @@
 #include "DtoSubject.h"
-
+void DTO_Subject:: create_new_subject(Subject object)
+{
+	ofstream out;
+	string way="Subjects\\date.txt";
+	out.open(way, ios_base::trunc);
+	out<<object.get_course_title()<<endl;
+	out.close();
+}
 void DTO_Subject:: Save_new_subject(Subject object) 
 {
 	string folder_name = "Subject" ;
