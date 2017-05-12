@@ -102,21 +102,4 @@ void DTO_Subject:: delete_subject(string name)
 		out << name_subjects[i] << endl;
 	}
 	out.close();
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
