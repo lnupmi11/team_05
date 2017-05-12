@@ -7,7 +7,7 @@ void DTO_Subject:: save_new_subject_date(Subject object)
 	out<<object.get_course_title()<<endl;
 	out.close();
 }
-void DTO_Subject:: create_new_subject(Subject object);
+void DTO_Subject:: create_new_subject(Subject object)
 {
 	ofstream out;
 	string folder_name = "Subjects\\" + object.get_course_title() ;
@@ -20,20 +20,57 @@ void DTO_Subject:: create_new_subject(Subject object);
 	out<<object.get_course_title()<<endl;
 	out.close();
 }
-vector<string> DTO_Subject::all_subject_date()
+bool DTO_Subject:: is_subject(string name)
 {
-	vector<string> subject;
-	string way = "Subject\\subjects.txt";
+	ifstream in("Subjects\\Subjects.txt");
 	string line;
-	ifstream input_subject(way);
-	while (!input_subject.eof()) {
-		getline(input_subject, line);
-		if (line.empty()) {
+	while(!line.eof())
+	{
+		getline(in, line);
+		if (line == name) 
+		{
+			return true;
+		}
+		if (line == "") 
+		{
+			return false;
+		}
+	}
+	return false;
+}
+Subject DTO_Subject:: find_date_subject(string name)
+{
+	ifstream in;
+	string way="Subjects\\"+name+"\\date.txt";
+	in.open(way);
+	string line;
+	Subject object;
+	getline(in,line);
+	object.set_course_title(name);
+	in.close();
+	return object;
+}
+vector<Subject> DTO_Subject::all_subject_date()
+{
+	vector<Subject> objects;
+	ifstream subjects;
+	ifstream in;
+	string line,subject_name;
+	subjects.open("Subjects\\Subjects.txt");
+	while (true) 
+	{
+		getline(subjects, subject_name);
+		if (subject_name=="") {
 			break;
 		}
-		subject.push_back(line);
+		string way="Subjects\\"+subject_name+"\\date.txt";
+		in.open(way);
+		Subject object;
+		getline(in,line);
+		object.set_course_title(name);
+		in.close();
+		objects.push_back(object);
 	}
-	input_subject.close();
-	return subject;
+	return objects;
 }
 
