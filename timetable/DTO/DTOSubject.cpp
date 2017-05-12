@@ -73,4 +73,50 @@ vector<Subject> DTO_Subject::all_subject_date()
 	}
 	return objects;
 }
-
+void DTO_Subject:: delete_subject(string name)
+{
+	string way = "Subjects\\" + name;
+	string first = way + "\\date.txt";
+	remove(first.c_str());
+	_rmdir(way.c_str());
+	ifstream subjects;
+	vector<string>name_subjects;
+	string line;
+	subjects.open("Subjects\\Subjects.txt");
+	while(true)
+	{
+		getline(subjects,line);
+		if (line == "") {
+			break;
+		}
+		if (line == name) {
+			continue;
+		}
+		name_subjects.push_back(line);
+	}
+	subjects.close();
+	ofstream out;
+	way="Subjects\\Subjects.txt";
+	out.open(way, ios_base::trunc);
+	for (int i = 0; i < name_subjects.size(); i++) {
+		out << name_subjects[i] << endl;
+	}
+	out.close();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
