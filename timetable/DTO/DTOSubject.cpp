@@ -1,5 +1,5 @@
 #include "DtoSubject.h"
-void DTO_Subject:: create_new_subject(Subject object)
+void DTO_Subject:: save_new_subject_date(Subject object)
 {
 	ofstream out;
 	string way="Subjects\\date.txt";
