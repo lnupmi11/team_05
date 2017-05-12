@@ -9,7 +9,7 @@ using namespace std;
 class DTO_Subject
 {
 public:
-	void create_new_subject(Subject object);
+	void save_new_subject_date(Subject object);
 	void Save_new_subject(Subject object);
 	void Save_new_subjects(vector<Subject> object);
 	vector<string> all_subject_date();
