@@ -1,9 +1,11 @@
 #pragma once
-#ifndef _Save_
-#define _Save_
-#include "../Entity/Subject.h"
 #include <direct.h>
+#include <string>
 #include <fstream>
+#include "../Entity/Subject.h"
+
+using namespace std;
+
 class DTO_Subject
 {
 public:
@@ -12,4 +14,3 @@ public:
 	void Save_new_subjects(vector<Subject> object);
 	vector<string> all_subject_date();
 };
-#endif
