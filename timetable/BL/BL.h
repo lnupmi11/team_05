@@ -4,6 +4,7 @@
 #include "../DTO/DtoTeacher.h"
 #include "../DTO/DtoLogin.h"
 #include "../DTO/DtoRoom.h"
+#include "../DTO/DtoSubject.h"
 
 void teacher_menu();
 
@@ -34,5 +35,17 @@ void print_all_room_date();
 void find_information_about_room();
 
 void room_menu();
+
+void subject_menu();
+
+void print_all_subjects_date();
+
+void create_new_subject();
+
+void replacemant_date_subject();
+
+void delete_subject();
+
+void find_information_about_subject();
 
 #endif
