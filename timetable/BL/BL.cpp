@@ -507,7 +507,7 @@ void replacemant_date_subject()
 		cout << "Enter correct name " << endl;
 		cin >> name;
 	}
-	cout<<"You can change name: "<<endl;
+	cout<<"You can change name"<<endl;
 	cout<<"Please enter new name of subject: ";
 	string new_name;
 	cin>>new_name;
