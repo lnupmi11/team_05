@@ -516,6 +516,7 @@ void replacemant_date_subject()
 	cin>>line;
 	subject.set_course_title(line);
 	dto_subject.save_new_subject_date(subject);
+	cout << endl << "Success" << endl << endl;
 }
 void delete_subject() 
 {
@@ -525,6 +526,7 @@ void delete_subject()
 	cin >> id;
 	DTO_Subject dto_subject;
 	dto_subject.delete_subject(id);
+	cout << endl << "Success" << endl << endl;
 }
 void create_new_subject() 
 {
