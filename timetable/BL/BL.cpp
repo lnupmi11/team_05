@@ -548,7 +548,7 @@ void create_new_subject()
 	}
 	cout<<"Enter the name of subject";
 	string name;
-	cin<<name;
+	cin>>name;
 	Subject subject(name,id);
 	dto_subject.create_new_subject(subject);
 	cout << endl << "Success" << endl << endl;
