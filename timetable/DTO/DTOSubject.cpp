@@ -24,7 +24,7 @@ bool DTO_Subject:: is_subject(string name)
 {
 	ifstream in("Subjects\\Subjects.txt");
 	string line;
-	while(!line.eof())
+	while(!in.eof())
 	{
 		getline(in, line);
 		if (line == name) 
@@ -67,7 +67,7 @@ vector<Subject> DTO_Subject::all_subject_date()
 		in.open(way);
 		Subject object;
 		getline(in,line);
-		object.set_course_title(name);
+		object.set_course_title(line);
 		in.close();
 		objects.push_back(object);
 	}
