@@ -477,12 +477,13 @@ void find_information_about_subject()
 {
 	system("cls");
 	Subject object;
-	string name;
-	cout << "Enter subject which you want find" << endl;
-	cin >> name;
+	string id;
+	cout << "Enter the ID of the subject which you want find" << endl;
+	cin >> id;
 	DTO_Subject dto_subject;
-	object = dto_subject.find_date_subject(name);
+	object = dto_subject.find_date_subject(id);
 	cout << "Name : " << object.get_course_title() << endl;
+	cout << "ID : " << object.get_id() << endl;
 }
 void print_all_subjects_date() 
 {
@@ -492,47 +493,47 @@ void print_all_subjects_date()
 	objects = dto_subject.all_subject_date();
 	for (int i = 0; i < objects.size(); i++) {
 		cout << "Name : " << objects[i].get_course_title() << endl;
+		cout << "ID : " << objects[i].get_id() << endl;
 		cout << endl;
 	}
 }
 void replacemant_date_subject() 
 {
 	system("cls");
-	cout << "Enter subject which you want to edit" << endl;
-	string name;
-	cin >> name;
+	cout << "Enter the ID of the subject which you want to edit" << endl;
+	string id;
+	cin >> id;
 	DTO_Subject dto_subject;
-	while (!dto_subject.is_subject(name))
+	while (!dto_subject.is_subject(id))
 	{
-		cout << "Enter correct name " << endl;
-		cin >> name;
+		cout << "Enter correct id" << endl;
+		cin >> id;
 	}
-	cout<<"You can change name"<<endl;
-	cout<<"Please enter new name of subject: ";
-	string new_name;
-	cin>>new_name;
 	Subject subject;
-	subject.set_course_title(new_name);
+	subject.set_id(id);
 	string line;
+	cout<<"Please edit the name of the subject"<<endl;
+	cin>>line;
+	subject.set_course_title(line);
 	dto_subject.save_new_subject_date(subject);
 }
 void delete_subject() 
 {
 	system("cls");
-	cout << "Enter subject which you want to delete" << endl;
-	string name;
-	cin >> name;
+	cout << "Enter the ID of the subject which you want to delete" << endl;
+	string id;
+	cin >> id;
 	DTO_Subject dto_subject;
-	dto_subject.delete_subject(name);
+	dto_subject.delete_subject(id);
 }
 void create_new_subject() 
 {
 	system("cls");
-	cout << "Enter subject name ";
-	string name;
-	cin >> name;
+	cout << "Enter subject ID ";
+	string id;
+	cin >> id;
 	DTO_Subject dto_subject;
-	while (dto_subject.is_subject(name)) {
+	while (dto_subject.is_subject(id)) {
 		cout << "This subject already created" << endl;
 		cout << "To return to the previous menu enter 1 " << endl;
 		cout << "To enter again 2" << endl << "Set option" << endl;
@@ -542,10 +543,13 @@ void create_new_subject()
 			return;
 		}
 		else {
-			cin >> name;
+			cin >> id;
 		}
 	}
-	Subject subject(name);
+	cout<<"Enter the name of subject";
+	string name;
+	cin<<name;
+	Subject subject(name,id);
 	dto_subject.create_new_subject(subject);
 	cout << endl << "Success" << endl << endl;
 }
