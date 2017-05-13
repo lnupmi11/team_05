@@ -529,7 +529,7 @@ void delete_subject()
 void create_new_subject() 
 {
 	system("cls");
-	cout << "Enter subject ID ";
+	cout << "Enter subject ID: ";
 	string id;
 	cin >> id;
 	DTO_Subject dto_subject;
@@ -546,7 +546,7 @@ void create_new_subject()
 			cin >> id;
 		}
 	}
-	cout<<"Enter the name of subject";
+	cout<<"Enter the name of subject: ";
 	string name;
 	cin>>name;
 	Subject subject(name,id);
