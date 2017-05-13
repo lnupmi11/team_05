@@ -481,7 +481,7 @@ void find_information_about_subject()
 	cout << "Enter subject which you want find" << endl;
 	cin >> name;
 	DTO_Subject dto_subject;
-	object = dto_subject.find_date_subject(string name);
+	object = dto_subject.find_date_subject(name);
 	cout << "Name : " << object.get_course_title() << endl;
 }
 void print_all_subjects_date() 
