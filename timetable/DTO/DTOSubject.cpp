@@ -2,7 +2,7 @@
 void DTO_Subject:: save_new_subject_date(Subject object)
 {
 	ofstream out;
-	string way="Subjects\\"+object.get_course_title() +"date.txt";
+	string way="Subjects\\"+object.get_course_title() +"\\date.txt";
 	out.open(way, ios_base::trunc);
 	out<<object.get_course_title()<<endl;
 	out.close();
