@@ -507,8 +507,12 @@ void replacemant_date_subject()
 		cout << "Enter correct name " << endl;
 		cin >> name;
 	}
+	cout<<"You can change name: "<<endl;
+	cout<<"Please enter new name of subject: ";
+	string new_name;
+	cin>>new_name;
 	Subject subject;
-	subject.set_course_title(name);
+	subject.set_course_title(new_name);
 	string line;
 	dto_subject.save_new_subject_date(subject);
 }
