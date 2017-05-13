@@ -7,11 +7,14 @@ using namespace std;
 
 class Subject {
 private:
-	string course_title; // íàçâà ïðåäìåòó
+	string id;
+	string course_title; 
 public:
 	void set_course_title(string);
 	string get_course_title();
+	void set_id(string);
+	string get_id();
 Subject();
-Subject(string course_title1); 
+Subject(string course_title1,string id1); 
 Subject(const Subject &object); 
 };
