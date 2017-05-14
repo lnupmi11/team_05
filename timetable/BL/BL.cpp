@@ -481,6 +481,11 @@ void find_information_about_subject()
 	cout << "Enter the ID of the subject which you want find" << endl;
 	cin >> id;
 	DTO_Subject dto_subject;
+	while (!dto_subject.is_subject(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
 	object = dto_subject.find_date_subject(id);
 	cout << "Name : " << object.get_course_title() << endl;
 	cout << "ID : " << object.get_id() << endl;
