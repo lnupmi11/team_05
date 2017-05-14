@@ -631,3 +631,118 @@ void create_new_subject()
 	dto_subject.create_new_subject(subject);
 	cout << endl << "Success" << endl << endl;
 }
+void group_menu()
+{
+	while (true) 
+	{
+		int i;
+		cout << "1. Create new group " << endl << "2. Edit date group" << endl << "3. Delete group" << endl << "4. Print all groups" << endl << "5. Print one group" << endl << "6. Exit" << endl;
+		cout << "Set option ";
+		cin >> i;
+		switch (i)
+		{
+			case 1: create_new_group(); break;
+			case 2: replacemant_date_group(); break;
+			case 3: delete_group(); break;
+			case 4: print_all_groups_date(); break;
+			case 5: find_information_about_group(); break;
+			default:
+				break;
+		}
+		if (i == 6) {
+			break;
+		}
+	}
+}
+void create_new_group() 
+{
+	system("cls");
+	cout << "Enter GroupID: ";
+	string id;
+	cin >> id;
+	DTO_Group dto_group;
+	while (dto_group.is_group(id)) {
+		cout << "This group is already created" << endl;
+		cout << "To return to the previous menu enter 1 " << endl;
+		cout << "To try to create again enter 2" << endl << "Set option" << endl;
+		int i;
+		cin >> i;
+		if (i == 1) {
+			return;
+		}
+		else {
+			cin >> id;
+		}
+	}
+	cout<<"Enter the name of group: ";
+	string name;
+	cin>>name;
+	Group group(name,id);
+	dto_group.create_new_group(group);
+	cout << endl << "Successfully created" << endl << endl;
+}
+void print_all_groups_date() 
+{
+	system("cls");
+	vector<Group> objects;
+	DTO_Group dto_group;
+	objects = dto_group.all_group_date();
+	for (int i = 0; i < objects.size(); i++) {
+		cout << "Name of group: " << objects[i].get_name() << endl;
+		cout << "GroupID : " << objects[i].get_id() << endl;
+		cout << endl;
+	}
+}
+void replacemant_date_group() 
+{
+	system("cls");
+	cout << "Enter the ID of the group which you want to edit" << endl;
+	string id;
+	cin >> id;
+	DTO_Group dto_group;
+	while (!dto_group.is_group(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	Group group;
+	group.set_id(id);
+	string line;
+	cout<<"Edit the name of the group"<<endl;
+	cin>>line;
+	group.set_name(line);
+	dto_group.save_new_group_date(subject);
+	cout << endl << "Successfully replaced" << endl << endl;
+}
+void find_information_about_group() 
+{
+	system("cls");
+	Group object;
+	string id;
+	cout << "Enter the ID of the group which you want find" << endl;
+	cin >> id;
+	DTO_Group dto_group;
+	while (!dto_group.is_group(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	object = dto_group.find_date_group(id);
+	cout << "Name of group: " << object.get_name() << endl;
+	cout << "GroupID : " << object.get_id() << endl;
+}
+void delete_group() 
+{
+	system("cls");
+	cout << "Enter the ID of the group which you want to delete" << endl;
+	string id;
+	cin >> id;
+	DTO_Group dto_group;
+	while (!dto_group.is_group(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	dto_group.delete_group(id);
+	cout << endl << "Successfully deleted" << endl << endl;
+}
