@@ -34,10 +34,6 @@ void Room::set_capacity(int capacity) {
 	this->capacity = capacity;
 }
 
-void Room::set_number(string number) {
-	this->number = number;
-}
-
 void Room::set_type(string type) {
 	this->type = type;
 }

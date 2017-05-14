@@ -18,7 +18,6 @@ public:
 	string return_number();
 	string return_type();
 	int return_capacity();
-	void set_number(string number);
 	void set_type(string type);
 	void set_capacity(int capacity);
 };
