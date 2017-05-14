@@ -50,4 +50,16 @@ void delete_subject();
 
 void find_information_about_subject();
 
+void group_menu();
+
+void create_new_group();
+
+void print_all_groups_date();
+
+void replacemant_date_group();
+
+void find_information_about_group();
+
+void delete_group();
+
 #endif
