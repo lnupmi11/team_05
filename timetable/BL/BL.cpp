@@ -43,6 +43,7 @@ void Start() {
 		switch (i)
 		{
 			case 1: teacher_menu(); break;
+			case 2: group_menu(); break;
 			case 3: room_menu(); break;
 			case 4: subject_menu();break;
 			case 5: return;
