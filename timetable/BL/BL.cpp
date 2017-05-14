@@ -525,6 +525,11 @@ void delete_subject()
 	string id;
 	cin >> id;
 	DTO_Subject dto_subject;
+	while (!dto_subject.is_subject(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
 	dto_subject.delete_subject(id);
 	cout << endl << "Success" << endl << endl;
 }
