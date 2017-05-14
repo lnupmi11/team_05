@@ -5,7 +5,7 @@
 #include "../DTO/DtoLogin.h"
 #include "../DTO/DtoRoom.h"
 #include "../DTO/DtoSubject.h"
-
+#include "../DTO/DtoGroups.h"
 extern bool makeChanges;
 
 void teacher_menu();
