@@ -1,14 +1,18 @@
 #pragma once
-#ifndef _Save_
-#define _Save_
-#include "../Entity/Subject.h"
 #include <direct.h>
+#include <string>
 #include <fstream>
+#include "../Entity/Subject.h"
+
+using namespace std;
+
 class DTO_Subject
 {
 public:
-	void Save_new_subject(Subject object);
-	void Save_new_subjects(vector<Subject> object);
-	vector<string> all_subject_date();
+	void save_new_subject_date(Subject object);
+	void create_new_subject(Subject object);
+	bool is_subject(string id);
+	Subject find_date_subject(string id);
+	vector<Subject> all_subject_date();
+	void delete_subject(string id);
 };
-#endif

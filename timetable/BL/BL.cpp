@@ -44,6 +44,7 @@ void Start() {
 		{
 			case 1: teacher_menu(); break;
 			case 3: room_menu(); break;
+			case 4: subject_menu();break;
 			case 5: return;
 			default:
 				break;
@@ -514,4 +515,119 @@ void room_menu() {
 			}
 		}
 	}
+}
+void subject_menu()
+{
+	while (true) 
+	{
+		int i;
+		cout << "1. Create new subject " << endl << "2. Edit date subject" << endl << "3. Delete subject" << endl << "4. Print all subjects" << endl << "5. Print one subject" << endl << "6. Exit" << endl;
+		cout << "Set option ";
+		cin >> i;
+		switch (i)
+		{
+			case 1: create_new_subject(); break;
+			case 2: replacemant_date_subject(); break;
+			case 3: delete_subject(); break;
+			case 4: print_all_subjects_date(); break;
+			case 5: find_information_about_subject(); break;
+			default:
+				break;
+		}
+		if (i == 6) {
+			break;
+		}
+	}
+}
+void find_information_about_subject() 
+{
+	system("cls");
+	Subject object;
+	string id;
+	cout << "Enter the ID of the subject which you want find" << endl;
+	cin >> id;
+	DTO_Subject dto_subject;
+	while (!dto_subject.is_subject(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	object = dto_subject.find_date_subject(id);
+	cout << "Name : " << object.get_course_title() << endl;
+	cout << "ID : " << object.get_id() << endl;
+}
+void print_all_subjects_date() 
+{
+	system("cls");
+	vector<Subject> objects;
+	DTO_Subject dto_subject;
+	objects = dto_subject.all_subject_date();
+	for (int i = 0; i < objects.size(); i++) {
+		cout << "Name : " << objects[i].get_course_title() << endl;
+		cout << "ID : " << objects[i].get_id() << endl;
+		cout << endl;
+	}
+}
+void replacemant_date_subject() 
+{
+	system("cls");
+	cout << "Enter the ID of the subject which you want to edit" << endl;
+	string id;
+	cin >> id;
+	DTO_Subject dto_subject;
+	while (!dto_subject.is_subject(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	Subject subject;
+	subject.set_id(id);
+	string line;
+	cout<<"Please edit the name of the subject"<<endl;
+	cin>>line;
+	subject.set_course_title(line);
+	dto_subject.save_new_subject_date(subject);
+	cout << endl << "Success" << endl << endl;
+}
+void delete_subject() 
+{
+	system("cls");
+	cout << "Enter the ID of the subject which you want to delete" << endl;
+	string id;
+	cin >> id;
+	DTO_Subject dto_subject;
+	while (!dto_subject.is_subject(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	dto_subject.delete_subject(id);
+	cout << endl << "Success" << endl << endl;
+}
+void create_new_subject() 
+{
+	system("cls");
+	cout << "Enter subject ID: ";
+	string id;
+	cin >> id;
+	DTO_Subject dto_subject;
+	while (dto_subject.is_subject(id)) {
+		cout << "This subject already created" << endl;
+		cout << "To return to the previous menu enter 1 " << endl;
+		cout << "To enter again 2" << endl << "Set option" << endl;
+		int i;
+		cin >> i;
+		if (i == 1) {
+			return;
+		}
+		else {
+			cin >> id;
+		}
+	}
+	cout<<"Enter the name of subject: ";
+	string name;
+	cin>>name;
+	Subject subject(name,id);
+	dto_subject.create_new_subject(subject);
+	cout << endl << "Success" << endl << endl;
 }
