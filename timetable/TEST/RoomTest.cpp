@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "stdafx.h"
-#include "DTO\DtoRoom.h"
+#include "..\DTO\DtoRoom.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -60,9 +60,24 @@ namespace RoomTests
 			object.set_type("Historical");
 			object.set_capacity(5);
 
-			save.save_new_room_date(object);
+			try
+			{
+				save.save_new_room_date(object);
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
 
-			object = save.find_date_room("459");
+			try
+			{
+				object = save.find_date_room("459");
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
+
 
 			test1 = object.return_capacity();
 			test2 = object.return_type();
