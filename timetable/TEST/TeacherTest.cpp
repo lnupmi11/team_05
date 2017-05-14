@@ -34,7 +34,15 @@ namespace TeacherTests
 
 			test = save.check_ID("321524363647547");
 			Assert::AreEqual(true, test);
-			save.delete_teach("321524363647547");
+
+			try
+			{
+				save.delete_teach("321524363647547");
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
 		}
 
 		TEST_METHOD(FindTeacher)
@@ -65,7 +73,15 @@ namespace TeacherTests
 			age2 = object2.return_age();
 
 			Assert::AreEqual(age1, age2);
-			save.delete_teach("321524363647547");
+			
+			try
+			{
+				save.delete_teach("321524363647547");
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
 		}
 	};
 }

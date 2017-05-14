@@ -34,7 +34,15 @@ namespace RoomTests
 
 			test = save.is_room("213");
 			Assert::AreEqual(true, test);
-			save.delete_room("213");
+
+			try
+			{
+				save.delete_room("213");
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
 		}
 
 
@@ -85,7 +93,14 @@ namespace RoomTests
 			Assert::AreEqual(5, test1);
 			Assert::AreEqual("Historical", test2);
 
-			save.delete_room("459");
+			try
+			{
+				save.delete_room("459");
+			}
+			catch (exception& ex)
+			{
+				Assert::Fail();
+			}
 		}
 
 		TEST_METHOD(IsRoom)
