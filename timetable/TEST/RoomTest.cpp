@@ -10,7 +10,7 @@ using namespace std;
 
 namespace RoomTests
 {
-	TEST_CLASS(RoomTest)
+	TEST_CLASS(RoomUnitTest)
 	{
 
 	public:

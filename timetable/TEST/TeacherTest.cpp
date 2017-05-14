@@ -10,7 +10,7 @@ using namespace std;
 
 namespace TeacherTests
 {
-	TEST_CLASS(TeacherTest)
+	TEST_CLASS(TeacherUnitTest)
 	{
 
 	public:
