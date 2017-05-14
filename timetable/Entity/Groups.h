@@ -6,12 +6,14 @@
 using namespace std;
 
 class Group {
-private:
+	string id;
 	string name; //(ПМІ-11)
 public:
 	Group();
-	Group(string n);
+	Group(string n, string i);
 	Group(const Group& obj);
-	void set_name(string n);
+	void set_name(string);
 	string get_name();
+	void set_id(string);
+	string get_id();
 };
