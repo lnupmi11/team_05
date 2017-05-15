@@ -652,14 +652,15 @@ void create_new_subject()
 }
 void group_menu()
 {
-	while (true) 
-	{
-		int i;
-		cout << "1. Create new group " << endl << "2. Edit date group" << endl << "3. Delete group" << endl << "4. Print all groups" << endl << "5. Print one group" << endl << "6. Exit" << endl;
-		cout << "Set option ";
-		cin >> i;
-		switch (i)
+	if (makeChanges == true) {
+		while (true)
 		{
+			int i;
+			cout << "1. Create new group " << endl << "2. Edit date group" << endl << "3. Delete group" << endl << "4. Print all groups" << endl << "5. Print one group" << endl << "6. Exit" << endl;
+			cout << "Set option ";
+			cin >> i;
+			switch (i)
+			{
 			case 1: create_new_group(); break;
 			case 2: replacemant_date_group(); break;
 			case 3: delete_group(); break;
@@ -667,9 +668,28 @@ void group_menu()
 			case 5: find_information_about_group(); break;
 			default:
 				break;
+			}
+			if (i == 6) {
+				break;
+			}
+
 		}
-		if (i == 6) {
-			break;
+	}
+	else {
+		while (true) {
+			int i;
+			cout << "1. Print all groups" << endl << "2. Print one group" << endl << "3. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: print_all_groups_date(); break;
+			case 2: find_information_about_group(); break;
+			default:
+				break;
+			}
+			if (i == 3) {
+				break;
+			}
 		}
 	}
 }
