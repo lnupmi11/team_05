@@ -45,17 +45,24 @@ void Start() {
 		system("cls");
 		cout << "Available menu items :" << endl;
 		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Exit" << endl;
-		int i;
+		string i;
 		cin >> i;
-		switch (i)
+		if (is_number(i))
 		{
+			switch (stoi(i))
+			{
 			case 1: teacher_menu(); break;
 			case 2: group_menu(); break;
 			case 3: room_menu(); break;
-			case 4: subject_menu();break;
+			case 4: subject_menu(); break;
 			case 5: return;
 			default:
 				break;
+			}
+		}
+		else
+		{
+			cout << "Input date is incorrect. Try again" << endl;
 		}
 	}
 }
@@ -64,38 +71,52 @@ void teacher_menu() {
 	system("cls");
 	if (makeChanges == true) {
 		while (true) {
-			int i;
+			string i;
 			cout << "1. Create" << endl << "2. Print all" << endl << "3. Information about teacher" << endl << "4. Edit" << endl << "5. Delete" << endl << "6. Exit" << "\nset option: ";
 			cin >> i;
-			switch (i)
+			if (!is_number(i))
 			{
-			case 1: create_new_teacher(); break;
-			case 2: print_all_teachers_date(); break;
-			case 3: find_information_about_teacher(); break;
-			case 4: replacemant_date_teacher(); break;
-			case 5: delete_teacher(); break;
-			default:
-				break;
+				cout << "Enter correct input date" << endl;
 			}
-			if (i == 6) {
-				break;
+			else
+			{
+				switch (stoi(i))
+				{
+				case 1: create_new_teacher(); break;
+				case 2: print_all_teachers_date(); break;
+				case 3: find_information_about_teacher(); break;
+				case 4: replacemant_date_teacher(); break;
+				case 5: delete_teacher(); break;
+				default:
+					break;
+				}
+				if (stoi(i) == 6) {
+					break;
+				}
 			}
 		}
 	}
 	else {
 		while (true) {
-			int i;
+			string i;
 			cout << "1. Print all" << endl << "2. Information about teacher" << endl << "3. Exit" << "\nset option: ";
 			cin >> i;
-			switch (i)
+			if (!is_number(i))
 			{
-			case 1: print_all_teachers_date(); break;
-			case 2: find_information_about_teacher(); break;
-			default:
-				break;
+				cout << "Enter correct input date" << endl;
 			}
-			if (i == 3) {
-				break;
+			else
+			{
+				switch (stoi(i))
+				{
+				case 1: print_all_teachers_date(); break;
+				case 2: find_information_about_teacher(); break;
+				default:
+					break;
+				}
+				if (stoi(i) == 3) {
+					break;
+				}
 			}
 		}
 	}
@@ -341,46 +362,49 @@ void find_information_about_teacher() {
 	cout << "1) Enter ID which teacher you want to find" << endl;
 	cout << "2) Enter name and last name which teacher you want to find" << endl;
 	cout << "set option: ";
-	int i;
+	string i;
 	cin >> i;
-	if (i == 1) {
-		cout << "Enter ID" << endl;
-		string ID;
-		cin >> ID;
-		Teacher object;
-		object = dto.find_teacher(ID);
-		if (object.return_identification_code() == "") {
-			cout << "This teacher was not found." << endl;
-			return;
+	if (is_number(i))
+	{
+		if (stoi(i) == 1) {
+			cout << "Enter ID" << endl;
+			string ID;
+			cin >> ID;
+			Teacher object;
+			object = dto.find_teacher(ID);
+			if (object.return_identification_code() == "") {
+				cout << "This teacher was not found." << endl;
+				return;
+			}
+			cout << endl;
+			cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
+			cout << "Age :" << object.return_age() << endl;
+			cout << "Identification Code :" << object.return_identification_code() << endl;
+			cout << "Subjects : " << endl;
+			for (int j = 1; j <= object.number_of_subjects(); j++) {
+				cout << j << ": " << object.subject_return(j) << endl;
+			}
+			cout << endl;
 		}
-		cout << endl;
-		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
-		cout << "Age :" << object.return_age() << endl;
-		cout << "Identification Code :" << object.return_identification_code() << endl;
-		cout << "Subjects : " << endl;
-		for (int j = 1; j <= object.number_of_subjects(); j++) {
-			cout << j << ": " << object.subject_return(j) << endl;
+		if (stoi(i) == 2) {
+			cout << "Enter name and last name" << endl;
+			string name, last_name;
+			cin >> name >> last_name;
+			Teacher object = dto.find_teacher(name, last_name);
+			if (object.return_identification_code() == "") {
+				cout << "This teacher was not found." << endl;
+				return;
+			}
+			cout << endl;
+			cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
+			cout << "Age :" << object.return_age() << endl;
+			cout << "Identification Code :" << object.return_identification_code() << endl;
+			cout << "Subjects : " << endl;
+			for (int j = 1; j <= object.number_of_subjects(); j++) {
+				cout << j << ": " << object.subject_return(j) << endl;
+			}
+			cout << endl;
 		}
-		cout << endl;
-	}
-	if (i == 2) {
-		cout << "Enter name and last name" << endl;
-		string name, last_name;
-		cin >> name >> last_name;
-		Teacher object = dto.find_teacher(name, last_name);
-		if (object.return_identification_code() == "") {
-			cout << "This teacher was not found." << endl;
-			return;
-		}
-		cout << endl;
-		cout << "Name and last name :" << object.return_name() << " " << object.return_last_name() << endl;
-		cout << "Age :" << object.return_age() << endl;
-		cout << "Identification Code :" << object.return_identification_code() << endl;
-		cout << "Subjects : " << endl;
-		for (int j = 1; j <= object.number_of_subjects(); j++) {
-			cout << j << ": " << object.subject_return(j) << endl;
-		}
-		cout << endl;
 	}
 }
 
@@ -486,40 +510,54 @@ void room_menu() {
 	system("cls");
 	if (makeChanges == true) {
 		while (true) {
-			int i;
+			string i;
 			cout << "1. Create new room " << endl << "2. Edit date room" << endl << "3. Delete room" << endl << "4. Print all" << endl << "5. Print one room" << endl << "6. Exit" << endl;
 			cout << "Set option ";
 			cin >> i;
-			switch (i)
+			if (!is_number(i))
 			{
-			case 1: create_new_room(); break;
-			case 2: replacemant_date_room(); break;
-			case 3: delete_room(); break;
-			case 4: print_all_room_date(); break;
-			case 5: find_information_about_room(); break;
-			default:
-				break;
+				cout << "Enter correct input date" << endl;
 			}
-			if (i == 6) {
-				break;
+			else
+			{
+				switch (stoi(i))
+				{
+				case 1: create_new_room(); break;
+				case 2: replacemant_date_room(); break;
+				case 3: delete_room(); break;
+				case 4: print_all_room_date(); break;
+				case 5: find_information_about_room(); break;
+				default:
+					break;
+				}
+				if (stoi(i) == 6) {
+					break;
+				}
 			}
 		}
 	}
 	else {
 		while (true) {
-			int i;
+			string i;
 			cout << "1. Print all" << endl << "2. Print one room" << endl << "3. Exit" << endl;
 			cout << "Set option ";
 			cin >> i;
-			switch (i)
+			if (!is_number(i))
 			{
-			case 1: print_all_room_date(); break;
-			case 2: find_information_about_room(); break;
-			default:
-				break;
+				cout << "Enter correct input date" << endl;
 			}
-			if (i == 3) {
-				break;
+			else
+			{
+				switch (stoi(i))
+				{
+				case 1: print_all_room_date(); break;
+				case 2: find_information_about_room(); break;
+				default:
+					break;
+				}
+				if (stoi(i) == 3) {
+					break;
+				}
 			}
 		}
 	}
