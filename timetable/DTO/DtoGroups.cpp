@@ -46,14 +46,23 @@ Group DTO_Group::find_date_group(string id)
 	ifstream in;
 	string way = "group\\" + id + "\\date.txt";
 	in.open(way);
-	string line;
-	Group obj;
-	getline(in, line);
-	obj.name(line);
-	getline(in, line);
-	obj.set_id(line);
-	in.close();
-	return obj;
+	if (in.is_open())
+	{
+		string line;
+		Group obj;
+		getline(in, line);
+		obj.set_name(line);
+		getline(in, line);
+		obj.set_id(line);
+		in.close();
+		return obj;
+	}
+	else
+	{
+		cout << "This group not found" << endl;
+		Group object;
+		return object;
+	}
 }
 vector<Group> DTO_Group::all_group_date()
 {
