@@ -47,13 +47,20 @@ Room DTO_Room::find_date_room(string number) {
 	in.open(way);
 	string line;
 	Room object;
-	getline(in, line);
-	object.set_number(line);
-	getline(in, line);
-	object.set_capacity(stoi(line));
-	getline(in, line);
-	object.set_type(line);
-	in.close();
+	if (in.is_open())
+	{
+		getline(in, line);
+		object.set_number(line);
+		getline(in, line);
+		object.set_capacity(stoi(line));
+		getline(in, line);
+		object.set_type(line);
+		in.close();
+	}
+	else
+	{
+		cout << "This room not found" << endl;
+	}
 	return object;
 }
 

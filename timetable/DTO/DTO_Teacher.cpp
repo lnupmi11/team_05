@@ -14,8 +14,10 @@ void DTO_Teacher::Save_new_teacher(Teacher object) {
 	ofstream out_subject;
 	string subject_record = folder_name + "\\subjects.txt";
 	out_subject.open(subject_record, ios_base::trunc);
+	vector<string> subjects;
 	for (int i = 1; i <= object.number_of_subjects(); i++) {
 		out_subject << object.subject_return(i) << endl;
+		subjects.push_back(object.subject_return(i));
 	}
 	out_subject.close();
 	cout << "This teacher created" << endl;
@@ -23,6 +25,8 @@ void DTO_Teacher::Save_new_teacher(Teacher object) {
 	out_teacher.open("Teachers\\teachers.txt", ios_base::app);
 	out_teacher << object.return_identification_code() << endl;
 	out_teacher.close();
+	DTO_Subject save_subject;
+	save_subject.create_new_subjects_date_from_teacher(subjects);
 }
 
 vector<Teacher> DTO_Teacher::all_teachers_date() {

@@ -5,7 +5,12 @@ bool makeChanges;
 bool start_login() {
 	Login object;
 	string login, password;
-	cin >> login >> password;
+	cin >> login;
+	HANDLE hSTDin = GetStdHandle(STD_INPUT_HANDLE);
+	DWORD mode = 0;
+	GetConsoleMode(hSTDin, &mode);
+	SetConsoleMode(hSTDin, mode & (~ENABLE_ECHO_INPUT));
+	cin >> password;
 	if (object.check_login(login, password)) {
 		if (login != "admin") {
 			makeChanges = false;
@@ -26,8 +31,10 @@ void Start() {
 	cout << "Enter your login and password" << endl;
 	int count_try = 0;
 	while (!start_login()) {
-		cout << "Error. Please try again" << endl;
+		cout << "Error. Please try again. Click the button to continue" << endl;
 		count_try++;
+		_getch();
+		system("cls");
 		if (count_try == 5) {
 			cout << "Limit attempts exhausted. Please try again later";
 			return;
@@ -750,7 +757,7 @@ void replacemant_date_group()
 	cout<<"Edit the name of the group"<<endl;
 	cin>>line;
 	group.set_name(line);
-	dto_group.save_new_group_date(subject);
+	dto_group.save_new_group_date(group);
 	cout << endl << "Successfully replaced" << endl << endl;
 }
 void find_information_about_group() 

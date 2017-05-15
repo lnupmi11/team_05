@@ -2,6 +2,7 @@
 #ifndef _Save_
 #define _Save_
 #include "../Entity/Teacher.h"
+#include "DtoSubject.h"
 #include <direct.h>
 #include <fstream>
 

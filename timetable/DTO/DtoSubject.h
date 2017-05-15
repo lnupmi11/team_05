@@ -15,5 +15,6 @@ public:
 	Subject find_date_subject(string id);
 	vector<Subject> all_subject_date();
 	void delete_subject(string id);
-	void create_new_subjects_date_from_teacher(vector<Subject> v);
+	void create_new_subjects_date_from_teacher(vector<string> v);
+	bool is_subject_by_name(string name);
 };

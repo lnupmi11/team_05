@@ -20,6 +20,7 @@ public:
 	int return_capacity();
 	void set_type(string type);
 	void set_capacity(int capacity);
+	void set_number(string number);
 };
 
 

@@ -6,6 +6,9 @@
 #include "../DTO/DtoRoom.h"
 #include "../DTO/DtoSubject.h"
 #include "../DTO/DtoGroups.h"
+#include <Windows.h>
+#include <conio.h>
+
 extern bool makeChanges;
 
 void teacher_menu();
