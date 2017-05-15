@@ -1,4 +1,5 @@
 #include "DtoSubject.h"
+#include <cstdlib>
 void DTO_Subject:: save_new_subject_date(Subject object)
 {
 	ofstream out;
@@ -34,6 +35,28 @@ bool DTO_Subject:: is_subject(string id)
 			return true;
 		}
 		if (line == "") 
+		{
+			return false;
+		}
+	}
+	return false;
+}
+bool DTO_Subject:: is_subject_by_name(string name)
+{
+	ifstream in_for_id("Subjects\\Subjects.txt");
+	string line_for_id;
+	string line_for_name;
+	while(!in_for_id.eof())
+	{
+		getline(in_for_id, line_for_id);
+		string way="Subjects\\"+line_for_id+"\\data.txt";
+		ifstream in_for_name(way);
+		getline(in_for_name,line_for_name);
+		if (line_for_name == name) 
+		{
+			return true;
+		}
+		if (line_for_name == "") 
 		{
 			return false;
 		}
@@ -108,4 +131,17 @@ void DTO_Subject:: delete_subject(string id)
 		out << id_subjects[i] << endl;
 	}
 	out.close();
+}
+void DTO_Subject:: create_new_subjects_date_from_teacher(vector<string> v)
+{
+	DTO_Subject dto_subject;
+	for (int i = 0; i < v.size(); i++) 
+	{
+		if (!dto_subject.is_subject_by_name(v[i]))
+		{
+			string k=to_string(rand());
+			Subject object(v[i],k);
+			dto_subject.create_new_subject(object);
+		}
+	}	
 }
