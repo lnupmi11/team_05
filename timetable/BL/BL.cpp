@@ -519,14 +519,14 @@ void room_menu() {
 }
 void subject_menu()
 {
-	while (true) 
-	{
-		int i;
-		cout << "1. Create new subject " << endl << "2. Edit date subject" << endl << "3. Delete subject" << endl << "4. Print all subjects" << endl << "5. Print one subject" << endl << "6. Exit" << endl;
-		cout << "Set option ";
-		cin >> i;
-		switch (i)
-		{
+	system("cls");
+	if (makeChanges == true) {
+		while (true) {
+			int i;
+			cout << "1. Create subject" << endl << "2. Edit subject" << endl << "3. Delete subject" << endl << "4. Print all subjects" << endl << "5. Information about subject" << endl << "6. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
 			case 1: create_new_subject(); break;
 			case 2: replacemant_date_subject(); break;
 			case 3: delete_subject(); break;
@@ -534,9 +534,27 @@ void subject_menu()
 			case 5: find_information_about_subject(); break;
 			default:
 				break;
+			}
+			if (i == 6) {
+				break;
+			}
 		}
-		if (i == 6) {
-			break;
+	}
+	else {
+		while (true) {
+			int i;
+			cout << "1. Print all subjects" << endl << "2. Information about subject" << endl << "3. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: print_all_subjects_date(); break;
+			case 2: find_information_about_subject(); break;
+			default:
+				break;
+			}
+			if (i == 3) {
+				break;
+			}
 		}
 	}
 }
