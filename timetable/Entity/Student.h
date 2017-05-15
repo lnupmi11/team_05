@@ -9,9 +9,9 @@ class Student {
 	string id;
 	string full_name;  
 public:
-	Group();
-	Group(string f_n, string i);
-	Group(const Student& obj);
+	Student();
+	Student(string f_n, string i);
+	Student(const Student& obj);
 	void set_full_name(string);
 	string get_full_name();
 	void set_id(string);
