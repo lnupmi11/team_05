@@ -16,7 +16,7 @@ void DTO_Student::create_new_student(Student object)
 	_mkdir(folder_name.c_str());
 	string way = folder_name + "\\date.txt";
 	out.open(way, ios_base::app);
-	out << object.get_name() << endl;
+	out << object.get_full_name() << endl;
 	out << object.get_id() << endl;
 	out.close();
 	out.open("student\\student.txt", ios_base::app);
@@ -40,8 +40,8 @@ bool DTO_Student::is_student(string id)
 		}
 	}
 	return false;
-}
-Group DTO_Student::find_date_student(string id)
+};
+Student DTO_Student::find_date_student(string id)
 {
 	ifstream in;
 	string way = "student\\" + id + "\\student.txt";
