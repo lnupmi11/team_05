@@ -44,7 +44,7 @@ void Start() {
 	{
 		system("cls");
 		cout << "Available menu items :" << endl;
-		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Timetable" << "6. Exit" << endl;
+		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Timetable" << endl << "6. Exit" << endl;
 		string i;
 		cin >> i;
 		if (is_number(i))
@@ -725,16 +725,17 @@ void group_menu()
 	else {
 		while (true) {
 			int i;
-			cout << "1. Print all groups" << endl << "2. Print one group" << endl << "3. Exit" << "\nset option: ";
+			cout << "1. Print all groups" << endl << "2. Print one group" << endl << "3. See timetable group" << endl << "4. Exit" << "\nset option: ";
 			cin >> i;
 			switch (i)
 			{
 			case 1: print_all_groups_date(); break;
 			case 2: find_information_about_group(); break;
+			case 3: timetable_group(); break;
 			default:
 				break;
 			}
-			if (i == 3) {
+			if (i == 4) {
 				break;
 			}
 		}
@@ -837,42 +838,49 @@ void delete_group()
 void timetable_menu()
 {
 	system("cls");
-	cout << "1. Create a timetable for the group" << endl << "2. Edit a timetable for the group" << endl << "3. Exit" << endl;
-	cout << "Set option ";
-	string i;
-	cin >> i;
-	if (is_number(i))
+	if (makeChanges)
 	{
 		while (true)
 		{
-			switch (stoi(i))
+			cout << "1. Create a timetable for the group" << endl << "2. Edit a timetable for the group" << endl << "3. Exit" << endl;
+			cout << "Set option ";
+			string i;
+			cin >> i;
+			if (is_number(i))
 			{
-			case 1: create_timetable(); break;
-			case 2: edit_timetable(); break;
-			default:
-				break;
+				switch (stoi(i))
+				{
+				case 1: create_timetable(); break;
+				case 2: edit_timetable(); break;
+				default:
+					break;
+				}
+				if (stoi(i) == 3)
+				{
+					break;
+				}
 			}
-			if (stoi(i) == 3)
+			else
 			{
-				break;
+				cout << "Enter correct input data" << endl << endl;
 			}
 		}
 	}
 	else
 	{
-		cout << "Enter correct input data" << endl;
-		timetable_menu();
+		cout << "You do not have access" << endl;
+		_getch();
 	}
 }
 
 void create_timetable()
 {
-	cout << "Sorry this function does not work" << endl;
+	cout << "Sorry this function does not work" << endl << endl;
 }
 
 void edit_timetable()
 {
-	cout << "Sorry this function does not work" << endl;
+	cout << "Sorry this function does not work" << endl << endl;
 }
 
 void timetable_group()
@@ -887,12 +895,12 @@ void timetable_group()
 	}
 	else
 	{
-		cout << "This group not found" << endl;
+		cout << "This group not found" << endl << endl;
 	}
 }
 
 
 void group_timetable()
 {
-	cout << "Timetable was not created" << endl;
+	cout << "Timetable was not created" << endl << endl;
 }

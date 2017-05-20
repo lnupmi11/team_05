@@ -73,4 +73,6 @@ void create_timetable();
 
 void timetable_menu();
 
+void timetable_group();
+
 #endif
