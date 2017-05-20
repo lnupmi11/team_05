@@ -44,7 +44,7 @@ void Start() {
 	{
 		system("cls");
 		cout << "Available menu items :" << endl;
-		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl << "5. Timetable" << endl << "6. Exit" << endl;
+		cout << "1. Teacher" << endl << "2. Groups" << endl << "3. Rooms" << endl << "4. Subject" << endl <<"5. Student"<<endl << "6. Timetable" << endl << "7. Exit" << endl;
 		string i;
 		cin >> i;
 		if (is_number(i))
@@ -55,8 +55,9 @@ void Start() {
 			case 2: group_menu(); break;
 			case 3: room_menu(); break;
 			case 4: subject_menu(); break;
-			case 5: timetable_menu(); break;
-			case 6: return;
+			case 5: student_menu(); break;
+			case 6: timetable_menu(); break;
+			case 7: return;
 			default:
 				break;
 			}
@@ -903,4 +904,142 @@ void timetable_group()
 void group_timetable()
 {
 	cout << "Timetable was not created" << endl << endl;
+}
+
+
+void student_menu()
+{
+	system("cls");
+	if (makeChanges == true) {
+		while (true)
+		{
+			int i;
+			cout << "1. Create new student " << endl << "2. Edit date student" << endl << "3. Delete student" << endl << "4. Print all students" << endl << "5. Print one student" << endl << "6. Exit" << endl;
+			cout << "Set option ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: create_new_student(); break;
+			case 2: replacemant_date_student(); break;
+			case 3: delete_student(); break;
+			case 4: print_all_students_date(); break;
+			case 5: find_information_about_student(); break;
+			default:
+				break;
+			}
+			if (i == 6) {
+				break;
+			}
+
+		}
+	}
+	else {
+		while (true) {
+			int i;
+			cout << "1. Print all students" << endl << "2. Print one student" << endl << "3. Exit" << "\nset option: ";
+			cin >> i;
+			switch (i)
+			{
+			case 1: print_all_students_date(); break;
+			case 2: find_information_about_student(); break;
+			default:
+				break;
+			}
+			if (i == 3) {
+				break;
+			}
+		}
+	}
+}
+void create_new_student() 
+{
+	system("cls");
+	cout << "Enter StudentID: ";
+	string id;
+	cin >> id;
+	DTO_Student dto_student;
+	while (dto_student.is_student(id)) {
+		cout << "This student is already created" << endl;
+		cout << "To return to the previous menu enter 1 " << endl;
+		cout << "To try to create again enter 2" << endl << "Set option" << endl;
+		int i;
+		cin >> i;
+		if (i == 1) {
+			return;
+		}
+		else {
+			cin >> id;
+		}
+	}
+	cout<<"Enter the full name (name and surname) of student: ";
+	string full_name;
+	cin>>full_name;
+	Student student(full_name,id);
+	dto_student.create_new_student(student);
+	cout << endl << "Successfully created" << endl << endl;
+}
+void print_all_students_date() 
+{
+	system("cls");
+	vector<Student> objects;
+	DTO_Student dto_student;
+	objects = dto_student.all_student_date();
+	for (int i = 0; i < objects.size(); i++) {
+		cout << "Surname and Name " << objects[i].get_full_name() << endl;
+		cout << "Student's ID : " << objects[i].get_id() << endl;
+		cout << endl;
+	}
+}
+void replacemant_date_student() 
+{
+	system("cls");
+	cout << "Enter the ID of the student which you want to edit" << endl;
+	string id;
+	cin >> id;
+	DTO_Student dto_student;
+	while (!dto_student.is_student(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	Student student;
+	student.set_id(id);
+	string line;
+	cout<<"Edit the full name of the student"<<endl;
+	cin>>line;
+	student.set_full_name(line);
+	dto_student.save_new_student_date(student);
+	cout << endl << "Successfully replaced" << endl << endl;
+}
+void find_information_about_student() 
+{
+	system("cls");
+	Student object;
+	string id;
+	cout << "Enter the ID of the Student which you want to find" << endl;
+	cin >> id;
+	DTO_Student dto_student;
+	while (!dto_student.is_student(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	object = dto_student.find_date_student(id);
+	cout << "Name and Surname of Student: " << object.get_full_name() << endl;
+	cout << "Student's ID : " << object.get_id() << endl;
+}
+void delete_student() 
+{
+	system("cls");
+	cout << "Enter the ID of the Student which you want to delete" << endl;
+	string id;
+	cin >> id;
+	DTO_Student dto_student;
+	while (!dto_student.is_student(id))
+	{
+		cout << "Enter correct id" << endl;
+		cin >> id;
+	}
+	dto_student.delete_student(id);
+	cout << endl << "Successfully deleted" << endl << endl;
 }

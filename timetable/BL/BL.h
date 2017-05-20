@@ -6,6 +6,7 @@
 #include "../DTO/DtoRoom.h"
 #include "../DTO/DtoSubject.h"
 #include "../DTO/DtoGroups.h"
+#include "../DTO/DtoStudent.h"
 #include <Windows.h>
 #include <conio.h>
 
@@ -74,5 +75,17 @@ void create_timetable();
 void timetable_menu();
 
 void timetable_group();
+
+void student_menu();
+
+void create_new_student();
+
+void print_all_students_date();
+
+void replacemant_date_student();
+
+void find_information_about_student();
+
+void delete_student();
 
 #endif
