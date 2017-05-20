@@ -65,4 +65,12 @@ void find_information_about_group();
 
 void delete_group();
 
+void group_timetable();
+
+void edit_timetable();
+
+void create_timetable();
+
+void timetable_menu();
+
 #endif

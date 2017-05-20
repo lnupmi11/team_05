@@ -1,20 +1,16 @@
 #pragma once
-#ifndef _DTOSTUDENT_H_
-#define _DTOSTUDENT_H_
-#include "../Entity/Student.h"
-#include <direct.h>
 #include <fstream>
 #include <string>
+#include <direct.h>
+#include "../Entity/Student.h"
+
 using namespace std;
 
-class DTO_Student
-{
+class DTO_Student{
 public:
-	void save_new_student_date(Student obj);
-	void create_new_student(Student obj);
-	bool is_student(string id);
-	Student find_date_student(string id);
+	void create_new_student(Student object);
+	void save_new_student_data(Student object);
+	Student find_student(string name , string surname);
 	vector<Student> all_student_date();
-	void delete_student(string id);
+	void delete_student(string name , string surname); 
 };
-#endif
